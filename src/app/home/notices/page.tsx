@@ -5,13 +5,11 @@ import { Button } from "@/components/ui/button";
 
 const Notices = () => {
     return (
-        <Sidebar>
-            <Header name='Notícias'>
-                <Container>
-                    teste
-                </Container>
-            </Header>
-        </Sidebar>
+        <Header name='Notícias'>
+            <Container>
+                teste
+            </Container>
+        </Header>
     );
 }
 

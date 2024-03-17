@@ -5,13 +5,11 @@ import { Button } from "@/components/ui/button";
 
 const Investiment = () => {
     return (
-        <Sidebar>
-            <Header name='Investimento'>
-                <Container>
-                    teste
-                </Container>
-            </Header>
-        </Sidebar>
+        <Header name='Investimento'>
+            <Container>
+                teste
+            </Container>
+        </Header>
     );
 }
 

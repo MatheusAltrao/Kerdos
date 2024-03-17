@@ -5,13 +5,11 @@ import FinanceTable from './components/FinanceTable';
 
 const Finance = () => {
     return (
-        <Sidebar>
-            <Header name='Finanças'>
-                <Container>
-                    <FinanceTable />
-                </Container>
-            </Header>
-        </Sidebar>
+        <Header name='Finanças'>
+            <Container>
+                <FinanceTable />
+            </Container>
+        </Header>
     );
 };
 

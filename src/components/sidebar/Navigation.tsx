@@ -10,38 +10,38 @@ const Navigation = () => {
     return (
         <nav className='w-full flex flex-col gap-1 py-4 px-4'>
             <ActiveLink
-                href='/finance'
+                href='/home/finance'
                 name='Finanças'
                 pathname={pathname}
                 icon={<DollarSign size={18} />}
             />
             <ActiveLink
-                href='/dashboard'
+                href='/home/dashboard'
                 name='Dashboard'
                 pathname={pathname}
                 icon={<BarChart4 size={18} />}
             />
 
             <ActiveLink
-                href='/convertion'
+                href='/home/convertion'
                 name='Conversão'
                 pathname={pathname}
                 icon={<FileText size={18} />}
             />
             <ActiveLink
-                href='/investment'
+                href='/home/investment'
                 name='Investimento'
                 pathname={pathname}
                 icon={<TrendingUp size={18} />}
             />
             <ActiveLink
-                href='/notices'
+                href='/home/notices'
                 name='Notícias'
                 pathname={pathname}
                 icon={<Bell size={18} />}
             />
             <ActiveLink
-                href='/settings'
+                href='/home/settings'
                 name='Configuração'
                 pathname={pathname}
                 icon={<Settings size={18} />}
