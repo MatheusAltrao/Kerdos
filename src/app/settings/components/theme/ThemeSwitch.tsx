@@ -1,4 +1,4 @@
-import { Computer, MoonIcon, SunIcon } from 'lucide-react';
+import { MoonIcon, SunIcon } from 'lucide-react';
 
 interface ThemeSwitchProps {
     theme: string | undefined;
