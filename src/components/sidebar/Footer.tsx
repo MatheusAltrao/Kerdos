@@ -6,7 +6,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { DoorOpen } from 'lucide-react';
+import { DoorOpen, User } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -38,8 +38,13 @@ const Footer = () => {
                     </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align='end'>
-                    <DropdownMenuItem className='flex items-center justify-between gap-2'>
+                    <DropdownMenuItem className='flex items-center justify-between '>
                         Sair <DoorOpen size={20} />
+
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className='flex items-center justify-between '>
+
+                        Perfil <User size={20} />
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
