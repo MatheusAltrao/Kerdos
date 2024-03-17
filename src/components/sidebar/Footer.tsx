@@ -1,5 +1,12 @@
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { DoorOpen } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -16,15 +23,26 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className='py-4 px-8 border-t border-border flex items-center gap-2'>
-                <Avatar>
-                    <AvatarImage src='https://github.com/shadcn.png' />
-                    <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
-                <p className='text-sm font-medium text-muted-foreground'>
-                    matheusaltrao2@gmail.com
-                </p>
-            </div>
+            <DropdownMenu>
+                <DropdownMenuTrigger className=' ' asChild>
+                    <div className='py-2 px-4 border-t border-border '>
+                        <div className='py-2 px-4  hover:bg-muted transition-colors flex items-center gap-2 rounded cursor-pointer'>
+                            <Avatar>
+                                <AvatarImage src='https://github.com/shadcn.png' />
+                                <AvatarFallback>MA</AvatarFallback>
+                            </Avatar>
+                            <p className='text-sm font-medium text-muted-foreground'>
+                                matheusaltrao2@gmail.com
+                            </p>
+                        </div>
+                    </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align='end'>
+                    <DropdownMenuItem className='flex items-center justify-between gap-2'>
+                        Sair <DoorOpen size={20} />
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
         </footer>
     );
 };
