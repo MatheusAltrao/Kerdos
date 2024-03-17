@@ -7,7 +7,14 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Kerdos',
-    description: 'Seu site de finanças',
+    description: 'Seu controle de finanças',
+    icons: {
+        icon: [
+            {
+                url: '/favicon.jpeg',
+            },
+        ],
+    },
 };
 
 export default function RootLayout({
