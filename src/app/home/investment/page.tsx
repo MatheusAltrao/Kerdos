@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 async function fetchCurrencies() {
     try {
-        const response = await fetch(`https://api.hgbrasil.com/finance`);
+        const response = await fetch(`https://api.hgbrasil.com/finance?key=fa3eb7e0`);
         if (!response.ok) {
             throw new Error('Failed to fetch data');
         }
