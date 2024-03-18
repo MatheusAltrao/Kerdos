@@ -8,7 +8,9 @@ interface HomeProps {
 const Home = ({ children }: HomeProps) => {
     return (
         <Sidebar>
-            {children}
+            <div className="flex flex-1 h-full overflow-hidden" >
+                {children}
+            </div>
         </Sidebar>
     );
 }

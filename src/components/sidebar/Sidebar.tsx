@@ -10,7 +10,7 @@ interface SidebarProps {
 
 const Sidebar = ({ children }: SidebarProps) => {
     return (
-        <main className='min-h-screen w-screen flex flex-1'>
+        <main className='h-screen w-screen flex flex-1'>
             <div className='grid grid-cols-[1fr_5fr] w-full'>
                 <div className='border-r flex flex-1 flex-col border-border '>
                     <Header />
