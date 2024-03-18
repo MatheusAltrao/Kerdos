@@ -115,7 +115,7 @@ const Investiment = async () => {
 
     const cdi = fetchTaxesArray.map((item: any) => item.cdi)
     const selic = fetchTaxesArray.map((item: any) => item.selic)
-    const factor = fetchTaxesArray.map((item: any) => item.daily_factor)
+
 
     return (
         <Header name='Investimento'>
@@ -152,7 +152,7 @@ const Investiment = async () => {
                             <div className="grid grid-cols-4 gap-4 w-full">
                                 <TaxesCard name='CDI' amount={cdi} />
                                 <TaxesCard name='Selic' amount={selic} />
-                                <TaxesCard name='Daily Factor' amount={factor} />
+
                             </div>
                         </div>
 

@@ -11,7 +11,7 @@ const TaxesCard = ({ name, amount }: TaxesCardProps) => {
 
 
 
-            <div className={` bg-muted-foreground text-background  rounded-full flex items-center justify-center size-10 min-w-10`} >
+            <div className={` bg-muted-foreground text-secondary  rounded-full flex items-center justify-center size-10 min-w-10`} >
                 <Landmark size={16} />
             </div>
 
