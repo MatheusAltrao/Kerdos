@@ -27,7 +27,7 @@ const Investiment = async () => {
     const fetchStocksArray = fetch.results.stocks
     const fetchTaxesArray = fetch.results.taxes
 
-    console.log(fetchTaxesArray.map((item) => item))
+    console.log(fetchTaxesArray.map((item: any) => item))
 
     const currencies = [
         {
@@ -113,9 +113,9 @@ const Investiment = async () => {
         },
     ]
 
-    const cdi = fetchTaxesArray.map((item) => item.cdi)
-    const selic = fetchTaxesArray.map((item) => item.selic)
-    const factor = fetchTaxesArray.map((item) => item.daily_factor)
+    const cdi = fetchTaxesArray.map((item: any) => item.cdi)
+    const selic = fetchTaxesArray.map((item: any) => item.selic)
+    const factor = fetchTaxesArray.map((item: any) => item.daily_factor)
 
     return (
         <Header name='Investimento'>
