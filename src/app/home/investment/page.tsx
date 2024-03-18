@@ -27,8 +27,6 @@ const Investiment = async () => {
     const fetchStocksArray = fetch.results.stocks
     const fetchTaxesArray = fetch.results.taxes
 
-    console.log(fetchTaxesArray.map((item: any) => item))
-
     const currencies = [
         {
             name: fetchCurrenciesArray.USD.name,
