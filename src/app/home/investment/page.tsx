@@ -10,7 +10,7 @@ import StockCard from "./components/StockCard";
 
 async function fetchCurrencies() {
     try {
-        const response = await fetch(`https://api.hgbrasil.com/finance?key=755e419b`);
+        const response = await fetch(`https://api.hgbrasil.com/finance?key=755e419b`, { cache: 'force-cache', next: { revalidate: 86400 } }); //revalidate at every day
         if (!response.ok) {
             throw new Error('Failed to fetch data');
         }
