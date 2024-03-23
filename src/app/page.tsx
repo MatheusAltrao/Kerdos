@@ -1,9 +1,30 @@
+'use client'
 import Container from '@/components/content/Container';
 import Header from '@/components/content/Header';
 import Sidebar from '@/components/sidebar/Sidebar';
 import { Button } from '@/components/ui/button';
+import { LoaderCircle } from 'lucide-react';
+import { signIn, useSession } from 'next-auth/react'
+import { redirect, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+
 
 export default function Home() {
+
+    const { status } = useSession()
+    const router = useRouter()
+
+    async function handleSignIn() {
+        await signIn('google')
+    }
+
+    useEffect(() => {
+        if (status == 'authenticated') {
+            router.replace('/home/finance')
+        }
+    }, [status, router])
+
+
     return (
         <Sidebar>
             <Header name='Login'>
@@ -18,7 +39,11 @@ export default function Home() {
                             </p>
                         </div>
 
-                        <Button variant={'outline'}>Entrar com o Google</Button>
+                        {status == 'unauthenticated' &&
+                            <Button onClick={handleSignIn} variant={'outline'}>Entrar com o Google</Button>
+                        }
+
+                        {status == 'loading' && <Button variant={'outline'}><LoaderCircle className='animate-spin' size={20} /></Button>}
                     </div>
                 </Container>
             </Header>
