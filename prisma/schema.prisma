@@ -40,14 +40,30 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model Finances {
+  id              String   @id @default(cuid())
+  name            String
+  paymentMethod   String
+  category        String
+  amount          String
+  date            DateTime
+  bank            String
+  description     String
+  transactionType String
+  user            User?    @relation(fields: [id], references: [id])
+}
+
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
+  created_at    DateTime   @default(now())
+  isPlanActive  Boolean    @default(false)
   accounts      Account[]
   sessions      Session[]
+  finances      Finances[]
 }
 
 model VerificationToken {
