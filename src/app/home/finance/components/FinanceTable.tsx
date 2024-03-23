@@ -11,6 +11,7 @@ import {
 import { Eye, Trash } from 'lucide-react';
 import ActionsButtons from './ActionsButton';
 import Ball from './Ball';
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 
 const FinanceTable = () => {
 
@@ -73,37 +74,57 @@ const FinanceTable = () => {
 
 
     return (
-        <Table>
-            <TableHeader>
-                <TableRow>
-                    <TableHead>Nome</TableHead>
-                    <TableHead>Método de Pagamento</TableHead>
-                    <TableHead>Categoria</TableHead>
-                    <TableHead>Valor</TableHead>
-                    <TableHead>Data</TableHead>
-                    <TableHead>Conta</TableHead>
-                    <TableHead className='text-right'>Ações</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {object.map((item, index) => (
-                    <TableRow key={index}>
-                        <TableCell className='font-medium   gap-1 relative pl-8'>
-                            <Ball status={item.status} />{item.name}</TableCell>
-                        <TableCell >{item.method}</TableCell>
-                        <TableCell>{item.category}</TableCell>
-                        <TableCell>{item.amount}</TableCell>
-                        <TableCell>{item.date}</TableCell>
-                        <TableCell>{item.bank}</TableCell>
-
-                        <TableCell className='text-right space-x-2' >
-                            <ActionsButtons />
-                        </TableCell>
+        <div className='flex items-center justify-center gap-4 flex-col' >
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>Nome</TableHead>
+                        <TableHead>Método de Pagamento</TableHead>
+                        <TableHead>Categoria</TableHead>
+                        <TableHead>Valor</TableHead>
+                        <TableHead>Data</TableHead>
+                        <TableHead>Conta</TableHead>
+                        <TableHead className='text-right'>Ações</TableHead>
                     </TableRow>
-                ))}
+                </TableHeader>
+                <TableBody>
+                    {object.map((item, index) => (
+                        <TableRow key={index}>
+                            <TableCell className='font-medium   gap-1 relative pl-8'>
+                                <Ball status={item.status} />{item.name}</TableCell>
+                            <TableCell >{item.method}</TableCell>
+                            <TableCell>{item.category}</TableCell>
+                            <TableCell>{item.amount}</TableCell>
+                            <TableCell>{item.date}</TableCell>
+                            <TableCell>{item.bank}</TableCell>
 
-            </TableBody>
-        </Table>
+                            <TableCell className='text-right space-x-2' >
+                                <ActionsButtons />
+                            </TableCell>
+                        </TableRow>
+                    ))}
+
+                </TableBody>
+
+
+            </Table>
+
+            <Pagination>
+                <PaginationContent>
+                    <PaginationItem>
+                        <PaginationPrevious href="#" />
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationLink href="#">1</PaginationLink>
+                        <PaginationLink href="#">2</PaginationLink>
+                        <PaginationLink href="#">3</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationNext href="#" />
+                    </PaginationItem>
+                </PaginationContent>
+            </Pagination>
+        </div>
     );
 };
 
