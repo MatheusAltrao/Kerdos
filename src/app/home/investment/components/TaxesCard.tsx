@@ -16,7 +16,7 @@ const TaxesCard = ({ name, amount }: TaxesCardProps) => {
             </div>
 
             <div className="flex flex-col -mt-1 " >
-                <h2 className="font-semibold text-lg" >{name}</h2>
+                <h2 className="font-semibold text-base" >{name}</h2>
                 <p className="opacity-60 font-medium  text-sm" >{amount}%</p>
             </div>
 

@@ -118,45 +118,42 @@ const Investiment = async () => {
     return (
         <Header name='Investimento'>
             <Container>
-                <ScrollArea className="w-full flex flex-1 h-[90vh] pr-4 pt-4 pb-12 overflow-y-auto  " >
-                    <div className="w-full  space-y-8 " >
-                        <div className="space-y-4" >
-                            <h2 className="uppercase font-medium text-muted-foreground" >Moedas</h2>
-                            <div className="grid grid-cols-4 gap-4 w-full">
+                <div className="w-full  space-y-8 " >
+                    <div className="space-y-4" >
+                        <h2 className="uppercase font-medium text-muted-foreground" >Moedas</h2>
+                        <div className="grid grid-cols-4 gap-4 w-full">
 
-                                {currencies.map((currencie, index) => (
-                                    <CoinsCard key={index} name={currencie.name} buy={currencie.buy} variation={currencie.variation} />
-                                ))}
-                            </div>
+                            {currencies.map((currencie, index) => (
+                                <CoinsCard key={index} name={currencie.name} buy={currencie.buy} variation={currencie.variation} />
+                            ))}
                         </div>
-
-                        <Separator />
-
-                        <div className="space-y-4" >
-                            <h2 className="uppercase font-medium text-muted-foreground" >Ações</h2>
-                            <div className="grid grid-cols-4 gap-4 w-full">
-
-                                {stocks.map((stock, index) => (
-                                    <StockCard key={index} name={stock.name} variation={stock.variation} />
-                                ))}
-                            </div>
-                        </div>
-
-                        <Separator />
-
-                        <div className="space-y-4" >
-                            <h2 className="uppercase font-medium text-muted-foreground" >Taxas</h2>
-                            <div className="grid grid-cols-4 gap-4 w-full">
-                                <TaxesCard name='CDI' amount={cdi} />
-                                <TaxesCard name='Selic' amount={selic} />
-
-                            </div>
-                        </div>
-
-
                     </div>
 
-                </ScrollArea>
+                    <Separator />
+
+                    <div className="space-y-4" >
+                        <h2 className="uppercase font-medium text-muted-foreground" >Ações</h2>
+                        <div className="grid grid-cols-4 gap-4 w-full">
+
+                            {stocks.map((stock, index) => (
+                                <StockCard key={index} name={stock.name} variation={stock.variation} />
+                            ))}
+                        </div>
+                    </div>
+
+                    <Separator />
+
+                    <div className="space-y-4" >
+                        <h2 className="uppercase font-medium text-muted-foreground" >Taxas</h2>
+                        <div className="grid grid-cols-4 gap-4 w-full">
+                            <TaxesCard name='CDI' amount={cdi} />
+                            <TaxesCard name='Selic' amount={selic} />
+
+                        </div>
+                    </div>
+
+
+                </div>
 
             </Container>
         </Header>

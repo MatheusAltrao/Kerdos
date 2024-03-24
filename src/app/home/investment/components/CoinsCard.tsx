@@ -20,14 +20,13 @@ const CoinsCard = ({ name, variation, buy }: CoinsCardProps) => {
                 </div>
 
                 <div className="flex flex-col " >
-                    <h2 className="font-semibold text-lg" >{name.slice(0, 40)}</h2>
+                    <h2 className="font-semibold text-base" >{name.slice(0, 40)}</h2>
                     <p className="opacity-60 font-medium  text-sm" >{formatAmount(Number(buy))}</p>
                 </div>
             </div>
 
             <div>
                 <p className={`text-xs  py-px px-1 font-medium rounded ${isPositive ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'} `} >{variation}</p>
-
             </div>
         </div>
     );

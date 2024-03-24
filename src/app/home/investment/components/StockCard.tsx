@@ -20,7 +20,7 @@ const StockCard = ({ name, variation }: StockCardProps) => {
                     {isPositive ? <TrendingUp className='text-green-900' size={16} /> : <TrendingDown className='text-red-900' size={16} />}
                 </div>
 
-                <h2 className="font-semibold text-lg" >{name.slice(0, 40)}</h2>
+                <h2 className="font-semibold text-base" >{name.slice(0, 40)}</h2>
             </div>
 
             <div className="flex items-center gap-2" >
