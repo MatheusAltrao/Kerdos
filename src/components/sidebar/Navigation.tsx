@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import ActiveLink from './ActiveLink';
-import { BarChart4, Bell, DollarSign, FileText, Settings, TrendingUp } from 'lucide-react';
+import { ArrowRightLeft, BarChart4, Bell, DollarSign, FileText, Settings, TrendingUp } from 'lucide-react';
 
 const Navigation = () => {
     const pathname = usePathname();
@@ -26,7 +26,7 @@ const Navigation = () => {
                 href='/home/convertion'
                 name='Conversão'
                 pathname={pathname}
-                icon={<FileText size={18} />}
+                icon={<ArrowRightLeft size={18} />}
             />
             <ActiveLink
                 href='/home/investment'
@@ -39,6 +39,12 @@ const Navigation = () => {
                 name='Notícias'
                 pathname={pathname}
                 icon={<Bell size={18} />}
+            />
+            <ActiveLink
+                href='/home/plans'
+                name='Planos'
+                pathname={pathname}
+                icon={<FileText size={18} />}
             />
             <ActiveLink
                 href='/home/settings'
