@@ -83,7 +83,7 @@ const FinanceTable = () => {
                         <TableHead>Categoria</TableHead>
                         <TableHead>Valor</TableHead>
                         <TableHead>Data</TableHead>
-                        <TableHead>Conta</TableHead>
+                        <TableHead>Banco</TableHead>
                         <TableHead className='text-right'>Ações</TableHead>
                     </TableRow>
                 </TableHeader>

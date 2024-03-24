@@ -1,9 +1,12 @@
+'use client'
 import Container from '@/components/content/Container';
 import Header from '@/components/content/Header';
-import Sidebar from '@/components/sidebar/Sidebar';
 import FinanceTable from './components/FinanceTable';
 import { Button } from '@/components/ui/button';
 import { Calendar, Plus } from 'lucide-react';
+import { Dialog, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { DialogContent } from '@radix-ui/react-dialog';
+import AddTransaction from './components/addTransaction';
 
 const Finance = () => {
     return (
@@ -16,7 +19,16 @@ const Finance = () => {
 
                             <div className='flex items-center gap-2' >
                                 <Button variant={'outline'} className='gap-2' ><Calendar size={20} />Data</Button>
-                                <Button variant={'outline'} className='gap-2' ><Plus size={20} /> Adicionar</Button>
+
+
+                                <Dialog>
+                                    <DialogTrigger>
+                                        <div className='flex items-center rounded-md gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 ' >
+                                            <Plus size={20} /> Adicionar
+                                        </div>
+                                    </DialogTrigger>
+                                    <AddTransaction />
+                                </Dialog>
                             </div>
 
                         </div>
