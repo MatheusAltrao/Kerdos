@@ -50,6 +50,7 @@ model Finances {
   bank            String
   description     String
   transactionType String
+  userId          String   @default(cuid())
   user            User?    @relation(fields: [id], references: [id])
 }
 
@@ -63,7 +64,7 @@ model User {
   isPlanActive  Boolean    @default(false)
   accounts      Account[]
   sessions      Session[]
-  finances      Finances[]
+  finance       Finances[]
 }
 
 model VerificationToken {
