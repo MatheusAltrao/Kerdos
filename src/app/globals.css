@@ -88,3 +88,28 @@
 .text-error {
   @apply text-xs font-medium text-red-500;
 }
+
+.p-paginator-first {
+  @apply hidden;
+}
+.p-paginator-last {
+  @apply hidden;
+}
+
+.p-paginator-element svg {
+  @apply h-5 w-5  cursor-pointer  opacity-60  transition-opacity hover:opacity-100;
+}
+
+.p-component {
+  @apply flex items-center justify-center gap-8;
+}
+.p-paginator-pages {
+  @apply flex items-center justify-center gap-2;
+}
+
+.p-paginator-pages button {
+  @apply h-8 w-8   rounded border   transition-colors   hover:bg-border;
+}
+.p-paginator-pages .p-highlight {
+  @apply bg-border;
+}

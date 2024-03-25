@@ -3,9 +3,8 @@ import Container from '@/components/content/Container';
 import Header from '@/components/content/Header';
 import FinanceTable from './components/FinanceTable';
 import { Button } from '@/components/ui/button';
-import { Calendar, Plus } from 'lucide-react';
-import { Dialog, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { DialogContent } from '@radix-ui/react-dialog';
+import { ChevronDown, Plus } from 'lucide-react';
+import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import AddTransaction from './components/addTransaction';
 
 const Finance = () => {
@@ -18,7 +17,7 @@ const Finance = () => {
                             <input type="text" placeholder='Pesquise aqui' className='h-10 bg-muted rounded focus:outline-none p-2 w-full ' />
 
                             <div className='flex items-center gap-2' >
-                                <Button variant={'outline'} className='gap-2' ><Calendar size={20} />Data</Button>
+                                <Button variant={'outline'} className='gap-2' ><ChevronDown size={20} />Colunas</Button>
 
 
                                 <Dialog>

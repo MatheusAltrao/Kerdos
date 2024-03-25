@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { AuthProvider } from '@/providers/auth';
+import { PrimeReactProvider, } from 'primereact/api';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,8 +32,9 @@ export default function RootLayout({
                         attribute='class'
                         defaultTheme='light'
                         disableTransitionOnChange
-                    >
-                        {children}
+                    >  <PrimeReactProvider>
+                            {children}
+                        </PrimeReactProvider>
                     </ThemeProvider>
                 </AuthProvider>
             </body>
