@@ -84,3 +84,7 @@
   bottom: 0;
   @apply flex items-center justify-center;
 }
+
+.text-error {
+  @apply text-xs font-medium text-red-500;
+}
