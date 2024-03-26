@@ -20,7 +20,7 @@ export default function Home() {
 
     useEffect(() => {
         if (status == 'authenticated') {
-            router.replace('/home/finances')
+            router.push('/home/finances')
         }
     }, [status, router])
 
@@ -29,7 +29,26 @@ export default function Home() {
         <Sidebar>
             <Header name='Login'>
                 <Container>
-                    <div className='items-center w-full flex h-[50vh]  justify-center flex-col gap-4'>
+
+
+                    {status == 'unauthenticated' &&
+                        <div className='items-center w-full flex h-[50vh]  justify-center flex-col gap-4'>
+                            <div className='items-center flex justify-center flex-col space-y-1'>
+                                <h2 className='text-2xl'>
+                                    Seja bem-vindo ao <span className='font-bold'>Kerdos</span>
+                                </h2>
+                                <p className='text-sm text-muted-foreground'>
+                                    Faça login para ter controle financeiro
+                                </p>
+                            </div>
+                            <Button onClick={handleSignIn} variant={'outline'}>Entrar com o Google</Button>
+
+                        </div>
+                    }
+
+                    {status == 'loading' && <div className='items-center w-full flex h-[50vh]  justify-center flex-col gap-4'>
+
+
                         <div className='items-center flex justify-center flex-col space-y-1'>
                             <h2 className='text-2xl'>
                                 Seja bem-vindo ao <span className='font-bold'>Kerdos</span>
@@ -38,13 +57,9 @@ export default function Home() {
                                 Faça login para ter controle financeiro
                             </p>
                         </div>
+                        <Button variant={'outline'}><LoaderCircle className='animate-spin' size={20} /></Button>
+                    </div>}
 
-                        {status == 'unauthenticated' &&
-                            <Button onClick={handleSignIn} variant={'outline'}>Entrar com o Google</Button>
-                        }
-
-                        {status == 'loading' && <Button variant={'outline'}><LoaderCircle className='animate-spin' size={20} /></Button>}
-                    </div>
                 </Container>
             </Header>
         </Sidebar>
