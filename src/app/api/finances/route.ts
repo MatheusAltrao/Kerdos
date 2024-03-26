@@ -12,29 +12,25 @@ export async function POST(req: NextRequest) {
 
     try {
         const {
-            id,
             name,
-            paymentMethod,
+            transactionType,
             category,
+            paymentMethod,
+            bank,
             amount,
             date,
-            bank,
-            description,
-            transactionType,
             userId
         } = await req.json()
 
         await prismaClient.finances.create({
             data: {
-                id,
                 name,
-                paymentMethod,
+                transactionType,
                 category,
+                paymentMethod,
+                bank,
                 amount,
                 date,
-                bank,
-                description,
-                transactionType,
                 userId
             }
         })
