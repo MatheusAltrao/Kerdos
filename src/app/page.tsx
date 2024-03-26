@@ -20,7 +20,7 @@ export default function Home() {
 
     useEffect(() => {
         if (status == 'authenticated') {
-            router.replace('/home/finance')
+            router.replace('/home/finances')
         }
     }, [status, router])
 
@@ -28,8 +28,8 @@ export default function Home() {
     return (
         <Sidebar>
             <Header name='Login'>
-                <Container className='items-center justify-center'>
-                    <div className='items-center flex justify-center flex-col gap-4'>
+                <Container>
+                    <div className='items-center w-full flex h-[50vh]  justify-center flex-col gap-4'>
                         <div className='items-center flex justify-center flex-col space-y-1'>
                             <h2 className='text-2xl'>
                                 Seja bem-vindo ao <span className='font-bold'>Kerdos</span>
