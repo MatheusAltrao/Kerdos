@@ -10,7 +10,7 @@ const Navigation = () => {
     return (
         <nav className='w-full flex flex-col gap-1 py-4 px-4'>
             <ActiveLink
-                href='/home/finance'
+                href='/home/finances'
                 name='Finanças'
                 pathname={pathname}
                 icon={<DollarSign size={18} />}
