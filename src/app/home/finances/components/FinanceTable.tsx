@@ -55,7 +55,7 @@ const FinanceTable = ({ finances }: FinanceTableProps) => {
                                 <TableCell>{finance.bank}</TableCell>
 
                                 <TableCell className='text-right space-x-2' >
-                                    <ActionsButtons />
+                                    <ActionsButtons financeID={finance.id} />
                                 </TableCell>
                             </TableRow>
                         ))}

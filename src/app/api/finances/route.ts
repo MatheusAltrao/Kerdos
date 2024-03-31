@@ -40,4 +40,42 @@ export async function POST(req: NextRequest) {
         console.error('Failed to create new plan:', error);
         return NextResponse.json({ error: 'Failed to create new plan' }, { status: 500 });
     }
-} 
+}
+
+export async function DELETE(req: NextRequest) {
+    const session = await getServerSession(authOptions);
+
+    if (!session || !session.user) {
+        return NextResponse.json({ error: 'Not Authorized' }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(req.url);
+
+    const finaceID = searchParams.get('id')
+
+    if (!finaceID) {
+        return NextResponse.json({ error: 'Finace ID is required' }, { status: 400 });
+    }
+
+    try {
+        const existFinance = await prismaClient.finances.findUnique({
+            where: { id: Number(finaceID) }
+        })
+
+        if (!existFinance) {
+            return NextResponse.json({ error: 'Finance not found' }, { status: 404 });
+        }
+
+        await prismaClient.finances.delete({
+            where: {
+                id: Number(finaceID)
+            }
+        })
+
+        return NextResponse.json({ message: 'Finace deleted successfully!' });
+    } catch (error) {
+        console.error('Failed to delete finance:', error);
+        return NextResponse.json({ error: 'Failed to delete finance' }, { status: 500 });
+    }
+
+}
