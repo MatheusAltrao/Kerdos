@@ -61,6 +61,7 @@ model User {
   image         String?
   created_at    DateTime   @default(now())
   isPlanActive  Boolean    @default(false)
+  planStartDate DateTime?
   accounts      Account[]
   sessions      Session[]
   finance       Finances[]
