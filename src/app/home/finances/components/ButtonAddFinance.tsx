@@ -1,23 +1,38 @@
-'use client'
-import { Dialog, DialogContent, DialogOverlay, DialogPortal, DialogTrigger } from "@/components/ui/dialog";
+"use client";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { FinancesProps } from "@/utils/finances.type";
 import { Plus } from "lucide-react";
+import Alert from "./Alert";
 import AddTransaction from "./addTransaction";
 
 interface ButtonAddFinanceProps {
-    userId: string;
+  userId: string;
+  isPlanActive: boolean;
+  finances: FinancesProps[];
 }
 
-const ButtonAddFinance = ({ userId }: ButtonAddFinanceProps) => {
-    return (
-        <Dialog>
-            <DialogTrigger>
-                <div className='flex items-center rounded-md gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 ' >
-                    <Plus size={20} /> Adicionar
-                </div>
-            </DialogTrigger>
-            <AddTransaction userId={userId} />
-        </Dialog>
-    );
-}
+const ButtonAddFinance = ({
+  userId,
+  isPlanActive,
+  finances,
+}: ButtonAddFinanceProps) => {
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <div className="flex h-10 items-center gap-2 rounded-md border border-input bg-background px-4 py-2 hover:bg-accent hover:text-accent-foreground ">
+          <span className="hidden lg:block">Adicionar</span> <Plus size={20} />
+        </div>
+      </DialogTrigger>
+
+      {isPlanActive ? (
+        <AddTransaction userId={userId} />
+      ) : finances.length < 10 ? (
+        <AddTransaction userId={userId} />
+      ) : (
+        finances.length >= 10 && <Alert />
+      )}
+    </Dialog>
+  );
+};
 
 export default ButtonAddFinance;

@@ -1,10 +1,9 @@
-import { SlidersHorizontal } from "lucide-react";
 import Image from "next/image";
 import LogoSvg from "../../../public/logoSvg.svg";
 
 const Header = () => {
   return (
-    <header className=" items-cente flex h-[61px] border-b border-border px-8">
+    <header className=" items-cente flex h-[61px] border-b border-border px-4 py-4 lg:px-8">
       <div className="flex items-center gap-2">
         <Image
           src={LogoSvg}
@@ -14,7 +13,7 @@ const Header = () => {
           alt="logo"
           priority
         />
-        <h1 className="text-lg font-bold">Kerdos</h1>
+        <h1 className=" hidden text-lg  font-bold lg:block">Kerdos</h1>
       </div>
     </header>
   );

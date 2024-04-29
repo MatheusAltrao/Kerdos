@@ -1,19 +1,12 @@
 import Container from "@/components/content/Container";
 import Header from "@/components/content/Header";
-
 import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
-import FinanceTable from "./components/FinanceTable";
+import EditProfile from "./components/EditProfile";
 
-const Finance = async () => {
+const Profile = async () => {
   const session = await getServerSession(authOptions);
-
-  const finances = await prismaClient.finances.findMany({
-    where: {
-      userId: session?.user.id,
-    },
-  });
 
   const user = await prismaClient.user.findFirst({
     where: {
@@ -21,19 +14,13 @@ const Finance = async () => {
     },
   });
 
-  const isPlanActive = user?.isPlanActive!;
-
   return (
-    <Header name="Finanças">
+    <Header name="Perfil">
       <Container>
-        <FinanceTable
-          finances={finances}
-          isPlanActive={isPlanActive}
-          userId={session?.user.id as string}
-        />
+        <EditProfile user={user} />
       </Container>
     </Header>
   );
 };
 
-export default Finance;
+export default Profile;

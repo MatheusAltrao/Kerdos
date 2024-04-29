@@ -28,7 +28,7 @@ const FinanceID = async ({ params }: FinanceIDProps) => {
   const finance = await prismaClient.finances.findFirst({
     where: {
       userId: session?.user.id,
-      id: Number(params.id),
+      id: params.id,
     },
   });
 
@@ -45,8 +45,8 @@ const FinanceID = async ({ params }: FinanceIDProps) => {
               Aqui estão todos os detalhes da transação.
             </CardDescription>
           </CardHeader>
-          <CardContent className="p-0">
-            <div className="grid grid-cols-3 gap-6">
+          <CardContent className=" p-0">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 ">
               <div className="grid gap-3">
                 <Label htmlFor="name">Nome</Label>
                 <Input

@@ -1,24 +1,14 @@
 "use client";
+import Pie from "@/components/charts/Pie";
 import Container from "@/components/content/Container";
 import Header from "@/components/content/Header";
-import Card from "./components/Card";
-import { ArrowDown, ArrowUp, CalendarIcon, DollarSign } from "lucide-react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
-import { Calendar } from "@/components/ui/calendar";
-import { useEffect, useMemo, useState } from "react";
 import useDateRange from "@/hooks/useDateRange";
-import { api } from "@/lib/api";
-import { useRouter } from "next/navigation";
-import axios from "axios";
 import { FinancesProps } from "@/utils/finances.type";
-import Pie from "@/components/charts/Pie";
+import axios from "axios";
+import { ArrowDown, ArrowUp, DollarSign } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import Card from "./components/Card";
 
 const Dashboard = () => {
   const [startDate, setStartDate] = useState<Date | undefined>(new Date());
@@ -89,72 +79,16 @@ const Dashboard = () => {
       .length;
   }, [finances]);
 
+  const verifyPaymentMethods =
+    pix === 0 && credit === 0 && bankSlip === 0 && debit === 0 && money === 0;
+
+  const verifyPaymentType = withdraw === 0 && deposit === 0;
+
   return (
     <Header name="Dashboard">
       <Container>
         <div className="w-full space-y-8">
-          {/* <div className="flex items-center justify-end gap-4">
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant={"outline"}
-                  className={cn(
-                    "w-[150px] justify-start text-left font-normal",
-                    !startDate && "text-muted-foreground",
-                  )}
-                >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {startDate ? (
-                    format(startDate, "dd/MM/yyyy")
-                  ) : (
-                    <span>Selecione uma data</span>
-                  )}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0">
-                <Calendar
-                  required
-                  mode="single"
-                  showOutsideDays={false}
-                  selected={startDate}
-                  onSelect={setStartDate}
-                  initialFocus
-                />
-              </PopoverContent>
-            </Popover>
-            -
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant={"outline"}
-                  className={cn(
-                    "w-[150px] justify-start text-left font-normal",
-                    !endDate && "text-muted-foreground",
-                  )}
-                >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {endDate ? (
-                    format(endDate, "dd/MM/yyyy")
-                  ) : (
-                    <span>Escolha uma data</span>
-                  )}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0">
-                <Calendar
-                  required
-                  mode="single"
-                  showOutsideDays={false}
-                  selected={endDate}
-                  onSelect={setEndDate}
-                  className="rounded-md "
-                  fromDate={startDate}
-                />
-              </PopoverContent>
-            </Popover>
-          </div> */}
-
-          <div className="grid w-full grid-cols-3 gap-6">
+          <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
             <Card
               amount={depositAmount}
               title="Entradas"
@@ -176,21 +110,49 @@ const Dashboard = () => {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid  grid-cols-1 gap-6 lg:grid-cols-2">
             <div className="flex h-[400px]  items-center justify-center rounded-lg bg-muted p-8">
-              <Pie
-                colors={["#38bdf8", "#0ea5e9", "#0284c7", "#0369a1", "#075985"]}
-                labels={["PIX", "Dinheiro", "Boleto", "Crédito", "Débito"]}
-                values={[pix, money, bankSlip, credit, debit]}
-              />
+              {verifyPaymentMethods ? (
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <h2 className="text-lg font-medium">
+                    Nenhuma Transação Encontrada
+                  </h2>
+                  <p className="text-sm opacity-80">
+                    Atualmente não há dados de transações para exibir.
+                  </p>
+                </div>
+              ) : (
+                <Pie
+                  colors={[
+                    "#38bdf8",
+                    "#0ea5e9",
+                    "#0284c7",
+                    "#0369a1",
+                    "#075985",
+                  ]}
+                  labels={["PIX", "Dinheiro", "Boleto", "Crédito", "Débito"]}
+                  values={[pix, money, bankSlip, credit, debit]}
+                />
+              )}
             </div>
 
             <div className="flex h-[400px] items-center justify-center rounded-lg bg-muted p-8">
-              <Pie
-                colors={["#16a34a", "#dc2626"]}
-                labels={["Entrada", "Saída"]}
-                values={[deposit, withdraw]}
-              />
+              {verifyPaymentType ? (
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <h2 className="text-lg font-medium">
+                    Nenhuma Transação Encontrada
+                  </h2>
+                  <p className="text-sm opacity-80">
+                    Atualmente não há dados de transações para exibir.
+                  </p>
+                </div>
+              ) : (
+                <Pie
+                  colors={["#16a34a", "#dc2626"]}
+                  labels={["Entrada", "Saída"]}
+                  values={[deposit, withdraw]}
+                />
+              )}
             </div>
           </div>
         </div>

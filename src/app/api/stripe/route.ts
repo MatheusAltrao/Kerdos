@@ -1,12 +1,8 @@
 // pages/api/stripe-webhook.js
 
-import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
-import { getServerSession } from "next-auth";
-import Stripe from "stripe";
 import { NextResponse } from "next/server";
-import { format } from "date-fns";
+import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2023-10-16",
@@ -45,6 +41,8 @@ export async function POST(req: Request) {
       default:
         console.log(`Unhandled event type: ${event.type}`);
     }
+
+    console.log(event.type);
 
     return NextResponse.json({ received: true });
   } catch (err) {

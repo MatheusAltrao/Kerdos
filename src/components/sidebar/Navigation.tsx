@@ -1,22 +1,20 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import ActiveLink from "./ActiveLink";
 import {
-  ArrowRightLeft,
   BarChart4,
-  Bell,
   DollarSign,
   FileText,
   Settings,
   TrendingUp,
 } from "lucide-react";
+import { usePathname } from "next/navigation";
+import ActiveLink from "./ActiveLink";
 
 const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex w-full flex-col gap-1 px-4 py-4">
+    <nav className="flex w-full flex-col gap-1 px-2 py-4 lg:px-4">
       <ActiveLink
         href="/home/finances"
         name="Finanças"

@@ -1,10 +1,9 @@
 import Container from "@/components/content/Container";
 import Header from "@/components/content/Header";
 import { Separator } from "@/components/ui/separator";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import TaxesCard from "./components/TaxesCard";
 import CoinsCard from "./components/CoinsCard";
 import StockCard from "./components/StockCard";
+import TaxesCard from "./components/TaxesCard";
 
 //{ cache: 'force-cache', next: { revalidate: 86400 } }
 
@@ -122,7 +121,7 @@ const Investiment = async () => {
             <h2 className="font-medium uppercase text-muted-foreground">
               Moedas
             </h2>
-            <div className="grid w-full grid-cols-4 gap-4">
+            <div className="grid w-full grid-cols-1 gap-4  lg:grid-cols-4">
               {currencies.map((currencie, index) => (
                 <CoinsCard
                   key={index}
@@ -140,7 +139,7 @@ const Investiment = async () => {
             <h2 className="font-medium uppercase text-muted-foreground">
               Ações
             </h2>
-            <div className="grid w-full grid-cols-4 gap-4">
+            <div className="grid w-full  grid-cols-1 gap-4  lg:grid-cols-4">
               {stocks.map((stock, index) => (
                 <StockCard
                   key={index}
@@ -157,7 +156,7 @@ const Investiment = async () => {
             <h2 className="font-medium uppercase text-muted-foreground">
               Taxas
             </h2>
-            <div className="grid w-full grid-cols-4 gap-4">
+            <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-4">
               <TaxesCard name="CDI" amount={cdi} />
               <TaxesCard name="Selic" amount={selic} />
             </div>

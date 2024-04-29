@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { DollarSign } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -17,14 +16,14 @@ const ActiveLink = ({ pathname, href, name, icon }: ActiveLinkProps) => {
     <Link href={href}>
       <Button
         size={"sm"}
-        className={`flex w-full items-center justify-start gap-4 bg-transparent ${
+        className={`flex  items-center justify-start gap-4 bg-transparent lg:w-full ${
           activeLink && "bg-muted"
         }`}
         variant={"ghost"}
       >
         {icon}
 
-        {name}
+        <span className="hidden lg:block"> {name}</span>
       </Button>
     </Link>
   );

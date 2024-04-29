@@ -1,40 +1,34 @@
-'use client'
-import { ReactNode } from 'react';
-import Footer from './Footer';
-import Header from './Header';
-import Navigation from './Navigation';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-import { redirect } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+"use client";
+import { useSession } from "next-auth/react";
+import { ReactNode } from "react";
+import Footer from "./Footer";
+import Header from "./Header";
+import Navigation from "./Navigation";
 
 interface SidebarProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 const Sidebar = ({ children }: SidebarProps) => {
+  const { data } = useSession();
 
-    const { data } = useSession()
+  return (
+    <main className="flex h-screen w-screen flex-1">
+      <div className="grid w-full grid-cols-[60px_5fr] lg:grid-cols-[1fr_5fr]">
+        <div className="flex flex-1 flex-col border-r border-border ">
+          <Header />
 
-
-
-    return (
-        <main className='h-screen w-screen flex flex-1'>
-            <div className='grid grid-cols-[1fr_5fr] w-full'>
-                <div className='border-r flex flex-1 flex-col border-border '>
-                    <Header />
-
-                    <div className='  flex flex-1 h-full '>
-                        <div className='flex flex-col justify-between w-full  '>
-                            {data?.user && <Navigation />}
-                            <Footer />
-                        </div>
-                    </div>
-                </div>
-                {children}
+          <div className="  flex h-full flex-1 ">
+            <div className="flex w-full flex-col justify-between  ">
+              {data?.user && <Navigation />}
+              <Footer />
             </div>
-        </main>
-    );
+          </div>
+        </div>
+        {children}
+      </div>
+    </main>
+  );
 };
 
 export default Sidebar;

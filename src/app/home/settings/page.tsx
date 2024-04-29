@@ -1,13 +1,10 @@
 import Container from "@/components/content/Container";
 import Header from "@/components/content/Header";
-import Sidebar from "@/components/sidebar/Sidebar";
-import { useTheme } from "next-themes";
 import DropdownTheme from "./components/theme/DropdownTheme";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
