@@ -1,7 +1,7 @@
 import { authOptions } from "@/lib/auth";
+import { prismaClient } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { prismaClient } from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -64,7 +64,7 @@ export async function DELETE(req: NextRequest) {
 
   try {
     const existFinance = await prismaClient.finances.findUnique({
-      where: { id: Number(finaceID) },
+      where: { id: finaceID },
     });
 
     if (!existFinance) {
@@ -73,7 +73,7 @@ export async function DELETE(req: NextRequest) {
 
     await prismaClient.finances.delete({
       where: {
-        id: Number(finaceID),
+        id: finaceID,
       },
     });
 

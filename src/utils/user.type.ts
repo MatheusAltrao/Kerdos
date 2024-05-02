@@ -7,4 +7,5 @@ export type UserProps = {
   created_at: Date;
   isPlanActive: boolean;
   planStartDate: Date | null;
+  phone: string | null;
 } | null;
