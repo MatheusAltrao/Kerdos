@@ -3,7 +3,6 @@ import Header from "@/components/content/Header";
 import { Badge } from "@/components/ui/badge";
 import { CheckIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -14,10 +13,16 @@ import {
 import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import BuyPlan from "./components/BuyPlan";
+import CancelPlan from "./components/CancelPlan";
 
 const Plans = async () => {
   const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    redirect("/");
+  }
 
   const finances = await prismaClient.finances.findMany({
     where: {
@@ -35,7 +40,7 @@ const Plans = async () => {
     },
   });
 
-  const isPlanActive = user?.isPlanActive!;
+  const isPlanActive = user?.isPlanActive;
 
   return (
     <Header name="Planos">
@@ -82,7 +87,7 @@ const Plans = async () => {
                     </div>
 
                     {isPlanActive ? (
-                      <Button variant={"destructive"}>Cancelar plano</Button>
+                      <CancelPlan id={session?.user.id} />
                     ) : (
                       <BuyPlan />
                     )}
@@ -96,11 +101,11 @@ const Plans = async () => {
             className={`space-y-4 border-0 p-0 shadow-none ${isPlanActive && "hidden"}`}
           >
             <CardContent className="p-0">
-              <div className="">
+              <div className="space-y-4">
                 <div className="flex flex-col space-y-2 rounded border border-border p-8">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between ">
-                      <h3 className="text-xl font-bold">Free</h3>
+                      <h3 className="text-xl font-bold">Gratuito</h3>
                       <Badge variant="secondary">Atual</Badge>
                     </div>
                   </div>

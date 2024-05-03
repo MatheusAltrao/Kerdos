@@ -98,8 +98,8 @@ const AddTransaction = ({ userId }: AddTransactionProps) => {
   return (
     <DialogPortal>
       <DialogOverlay className="DialogOverlay">
-        <DialogContent className="z-20 w-full max-w-[700px] bg-transparent p-4">
-          <div className="rounded bg-zinc-50 p-4">
+        <DialogContent className="z-20 w-full max-w-[700px] border border-border bg-background  p-8">
+          <div className="rounded  p-4">
             <form
               onSubmit={handleSubmit(handleNewTransaction)}
               className="space-y-8"
