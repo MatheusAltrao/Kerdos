@@ -20,7 +20,7 @@ const ButtonAddFinance = ({
     <Dialog>
       <DialogTrigger>
         <div className="flex h-10 items-center gap-2 rounded-md border border-input bg-background px-4 py-2 hover:bg-accent hover:text-accent-foreground ">
-          <span className="hidden lg:block">Adicionar</span> <Plus size={20} />
+          <span className="hidden xl:block">Adicionar</span> <Plus size={20} />
         </div>
       </DialogTrigger>
 

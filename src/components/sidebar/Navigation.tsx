@@ -14,7 +14,7 @@ const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex w-full flex-col gap-1 px-2 py-4 lg:px-4">
+    <nav className="flex w-full flex-col gap-1 px-2 py-4 xl:px-4">
       <ActiveLink
         href="/home/finances"
         name="Finanças"

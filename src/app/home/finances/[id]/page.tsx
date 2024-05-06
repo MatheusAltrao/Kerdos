@@ -46,7 +46,7 @@ const FinanceID = async ({ params }: FinanceIDProps) => {
             </CardDescription>
           </CardHeader>
           <CardContent className=" p-0">
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 ">
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-3 ">
               <div className="grid gap-3">
                 <Label htmlFor="name">Nome</Label>
                 <Input

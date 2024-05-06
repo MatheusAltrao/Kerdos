@@ -5,7 +5,7 @@ const DropdownTheme = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="flex flex-col items-center  gap-8 lg:flex-row">
+    <div className="flex flex-col items-center  gap-8 xl:flex-row">
       <div className="flex flex-col gap-1">
         <button
           onClick={() => setTheme("light")}

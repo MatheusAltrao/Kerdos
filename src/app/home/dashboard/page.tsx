@@ -88,7 +88,7 @@ const Dashboard = () => {
     <Header name="Dashboard">
       <Container>
         <div className="grid w-full gap-8 ">
-          <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="grid w-full grid-cols-1 gap-6 xl:grid-cols-3">
             <Card
               amount={depositAmount}
               title="Entradas"
@@ -110,7 +110,7 @@ const Dashboard = () => {
             />
           </div>
 
-          <div className="grid  grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="grid  grid-cols-1 gap-6 xl:grid-cols-2">
             <div className="flex h-[400px]  items-center justify-center rounded-lg bg-muted p-8">
               {verifyPaymentMethods ? (
                 <div className="flex flex-col items-center justify-center gap-1">

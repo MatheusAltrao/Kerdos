@@ -20,7 +20,7 @@ const Footer = () => {
 
   return (
     <footer className="flex flex-col gap-8">
-      {/*   <div className=" hidden flex-col gap-4 px-8 py-4 lg:flex">
+      {/*   <div className=" hidden flex-col gap-4 px-8 py-4 xl:flex">
         <p className=" text-sm font-medium uppercase text-muted-foreground">
           Links Extras
         </p>
@@ -40,7 +40,7 @@ const Footer = () => {
         </div>
       </div> */}
 
-      <div className="flex items-center justify-center border-t border-border py-2 lg:justify-start lg:px-4 ">
+      <div className="flex items-center justify-center border-t border-border py-2 xl:justify-start xl:px-4 ">
         {status == "unauthenticated" && (
           <div className="flex cursor-pointer items-center justify-start  gap-2  rounded px-4 py-2 transition-colors hover:bg-muted">
             <div className="flex h-8  items-center ">
@@ -68,7 +68,7 @@ const Footer = () => {
                   <AvatarImage src={data.user?.image!} />
                   <AvatarFallback>MA</AvatarFallback>
                 </Avatar>
-                <p className="hidden truncate text-sm font-medium text-muted-foreground lg:block">
+                <p className="hidden truncate text-sm font-medium text-muted-foreground xl:block">
                   {data.user?.name}
                 </p>
               </div>

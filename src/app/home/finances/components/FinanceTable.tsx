@@ -78,7 +78,7 @@ const FinanceTable = ({
           <div className="flex items-center gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger
-                className="hidden outline-none ring-0 lg:flex"
+                className="hidden outline-none ring-0 xl:flex"
                 asChild
               >
                 <Button className="gap-2 outline-none" variant="outline">
@@ -114,7 +114,7 @@ const FinanceTable = ({
         </div>
       </header>
       <div className="flex w-full flex-col items-center justify-center gap-4 overflow-x-auto">
-        <div className="hidden w-full  lg:flex   ">
+        <div className="hidden w-full  xl:flex   ">
           <Table className=" w-full ">
             <TableHeader className="w-full">
               <TableRow className="w-full">
@@ -179,7 +179,7 @@ const FinanceTable = ({
           </Table>
         </div>
 
-        <div className="flex w-full  lg:hidden    ">
+        <div className="flex w-full  xl:hidden    ">
           <Table className=" w-full overflow-hidden">
             <TableHeader className="w-full">
               <TableRow className="w-full">
