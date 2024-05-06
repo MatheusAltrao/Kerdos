@@ -13,7 +13,7 @@ const Sidebar = ({ children }: SidebarProps) => {
   const { data } = useSession();
 
   return (
-    <main className="flex h-screen w-screen flex-1  ">
+    <main className="flex h-screen max-h-screen w-screen flex-1 overflow-hidden  ">
       <div className="grid h-screen w-full grid-cols-[60px_5fr]  xl:grid-cols-[1fr_5fr]">
         <div className="flex flex-1 flex-col border-r border-border ">
           <Header />
@@ -26,7 +26,7 @@ const Sidebar = ({ children }: SidebarProps) => {
           </div>
         </div>
 
-        {children}
+        <div className="h-screen overflow-y-auto ">{children}</div>
       </div>
     </main>
   );

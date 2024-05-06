@@ -6,13 +6,7 @@ interface ContainerProps {
 }
 
 const Container = ({ children, className }: ContainerProps) => {
-  return (
-    <div
-      className={`flex  min-h-screen flex-1    px-4 py-4 xl:px-8 ${className}`}
-    >
-      {children}
-    </div>
-  );
+  return <div className={`flex flex-1     ${className}`}>{children}</div>;
 };
 
 export default Container;
