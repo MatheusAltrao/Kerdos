@@ -45,7 +45,7 @@ const Plans = async () => {
   return (
     <Header name="Planos">
       <Container>
-        <div className="space-y-4">
+        <div className="w-full space-y-4">
           <Card className="space-y-4 border-0 p-0 shadow-none ">
             <CardHeader className="p-0">
               <CardTitle> Preços simples. Possibilidades ilimitadas.</CardTitle>
@@ -59,11 +59,11 @@ const Plans = async () => {
               <div className="">
                 <div className="flex flex-col space-y-2 rounded border border-border p-8">
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between ">
-                      <h3 className="text-xl font-bold">Profissional</h3>
+                    <div className="flex flex-col items-start gap-1 ">
                       <Badge variant="secondary">
                         {isPlanActive ? "Atual" : "Recomendado"}
                       </Badge>
+                      <h3 className="text-xl font-bold">Profissional</h3>
                     </div>
                   </div>
                   <ul className="grid gap-2 py-2">
@@ -85,9 +85,9 @@ const Plans = async () => {
                       <div className="text-2xl font-semibold">R$ 9,90</div>
                       <p className="text-xs text-muted-foreground">Por mês</p>
                     </div>
-
-                    {isPlanActive ? <CancelPlan /> : <BuyPlan />}
                   </div>
+
+                  {isPlanActive ? <CancelPlan /> : <BuyPlan />}
                 </div>
               </div>
             </CardContent>
@@ -100,9 +100,9 @@ const Plans = async () => {
               <div className="space-y-4">
                 <div className="flex flex-col space-y-2 rounded border border-border p-8">
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between ">
-                      <h3 className="text-xl font-bold">Gratuito</h3>
+                    <div className="flex flex-col items-start gap-1 ">
                       <Badge variant="secondary">Atual</Badge>
+                      <h3 className="text-xl font-bold">Gratuito</h3>
                     </div>
                   </div>
 
