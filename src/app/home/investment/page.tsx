@@ -114,7 +114,7 @@ const Investiment = async () => {
 
   return (
     <Container>
-      <div className="w-full  space-y-8 ">
+      <div className=" flex w-full flex-1 flex-col gap-8 overflow-y-auto ">
         <div className="space-y-4">
           <h2 className="font-medium uppercase text-muted-foreground">
             Moedas

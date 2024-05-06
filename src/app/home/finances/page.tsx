@@ -1,5 +1,4 @@
 import Container from "@/components/content/Container";
-import Header from "@/components/content/Header";
 
 import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
@@ -24,15 +23,13 @@ const Finance = async () => {
   const isPlanActive = user?.isPlanActive!;
 
   return (
-    <Header name="Finanças">
-      <Container>
-        <FinanceTable
-          finances={finances}
-          isPlanActive={isPlanActive}
-          userId={session?.user.id as string}
-        />
-      </Container>
-    </Header>
+    <Container>
+      <FinanceTable
+        finances={finances}
+        isPlanActive={isPlanActive}
+        userId={session?.user.id as string}
+      />
+    </Container>
   );
 };
 

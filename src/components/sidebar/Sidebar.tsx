@@ -13,8 +13,8 @@ const Sidebar = ({ children }: SidebarProps) => {
   const { data } = useSession();
 
   return (
-    <main className="flex h-screen w-screen flex-1 ">
-      <div className="grid h-screen w-full  grid-cols-[60px_5fr] xl:grid-cols-[1fr_5fr]">
+    <main className="flex h-screen w-screen flex-1  ">
+      <div className="grid h-screen w-full grid-cols-[60px_5fr]  xl:grid-cols-[1fr_5fr]">
         <div className="flex flex-1 flex-col border-r border-border ">
           <Header />
 

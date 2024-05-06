@@ -14,11 +14,7 @@ const Home = async ({ children }: HomeProps) => {
     redirect("/");
   }
 
-  return (
-    <Sidebar>
-      <div className="flex h-screen flex-1     ">{children}</div>
-    </Sidebar>
-  );
+  return <Sidebar>{children}</Sidebar>;
 };
 
 export default Home;

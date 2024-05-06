@@ -43,7 +43,7 @@ const Plans = async () => {
 
   return (
     <Container>
-      <div className="w-full space-y-4">
+      <div className=" flex w-full flex-1 flex-col gap-8 overflow-y-auto ">
         <Card className="space-y-4 border-0 p-0 shadow-none ">
           <CardHeader className="p-0">
             <CardTitle> Preços simples. Possibilidades ilimitadas.</CardTitle>

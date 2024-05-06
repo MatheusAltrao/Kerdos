@@ -1,5 +1,4 @@
 import Container from "@/components/content/Container";
-import Header from "@/components/content/Header";
 import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
@@ -15,11 +14,9 @@ const Profile = async () => {
   });
 
   return (
-    <Header name="Perfil">
-      <Container>
-        <EditProfile user={user} />
-      </Container>
-    </Header>
+    <Container>
+      <EditProfile user={user} />
+    </Container>
   );
 };
 
