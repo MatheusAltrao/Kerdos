@@ -20,26 +20,6 @@ const Footer = () => {
 
   return (
     <footer className="flex flex-col gap-8">
-      {/*   <div className=" hidden flex-col gap-4 px-8 py-4 xl:flex">
-        <p className=" text-sm font-medium uppercase text-muted-foreground">
-          Links Extras
-        </p>
-        <div className="flex flex-col gap-2 text-sm">
-          <Link
-            className="font-medium underline-offset-4 hover:underline"
-            href={"/"}
-          >
-            Precisa de Ajuda?
-          </Link>
-          <Link
-            className="font-medium underline-offset-4 hover:underline"
-            href={"/"}
-          >
-            Site
-          </Link>
-        </div>
-      </div> */}
-
       <div className="flex items-center justify-center border-t border-border py-2 xl:justify-start xl:px-4 ">
         {status == "unauthenticated" && (
           <div className="flex cursor-pointer items-center justify-start  gap-2  rounded px-4 py-2 transition-colors hover:bg-muted">

@@ -222,7 +222,7 @@ const FinanceTable = ({
 
         {finances.length == 0 && (
           <div>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground">
               Você ainda não tem nenhuma transação, clique em adicionar para
               criar novas transações.
             </p>
