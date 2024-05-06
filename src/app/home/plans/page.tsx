@@ -86,11 +86,7 @@ const Plans = async () => {
                       <p className="text-xs text-muted-foreground">Por mês</p>
                     </div>
 
-                    {isPlanActive ? (
-                      <CancelPlan id={session?.user.id} />
-                    ) : (
-                      <BuyPlan />
-                    )}
+                    {isPlanActive ? <CancelPlan /> : <BuyPlan />}
                   </div>
                 </div>
               </div>

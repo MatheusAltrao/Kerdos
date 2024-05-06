@@ -34,12 +34,7 @@ const Navigation = () => {
         pathname={pathname}
         icon={<TrendingUp size={18} />}
       />
-      {/* <ActiveLink
-        href="/home/notices"
-        name="Notícias"
-        pathname={pathname}
-        icon={<Bell size={18} />}
-      /> */}
+
       <ActiveLink
         href="/home/plans"
         name="Planos"

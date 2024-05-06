@@ -54,18 +54,19 @@ model Finances {
 }
 
 model User {
-  id            String     @id @default(cuid())
-  phone         String?
-  name          String?
-  email         String?    @unique
-  emailVerified DateTime?
-  image         String?
-  created_at    DateTime   @default(now())
-  isPlanActive  Boolean    @default(false)
-  planStartDate DateTime?
-  accounts      Account[]
-  sessions      Session[]
-  finance       Finances[]
+  id                   String     @id @default(cuid())
+  phone                String?
+  name                 String?
+  email                String?    @unique
+  emailVerified        DateTime?
+  image                String?
+  stripeSubscriptionId String?    @unique
+  created_at           DateTime   @default(now())
+  isPlanActive         Boolean    @default(false)
+  planStartDate        DateTime?
+  accounts             Account[]
+  sessions             Session[]
+  finance              Finances[]
 }
 
 model VerificationToken {

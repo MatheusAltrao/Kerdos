@@ -12,19 +12,13 @@ import { DialogTrigger } from "@radix-ui/react-dialog";
 import { ChevronLeft, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-interface CancelPlanProps {
-  id: string;
-}
-
-const CancelPlan = ({ id }: CancelPlanProps) => {
+const CancelPlan = () => {
   const { toast } = useToast();
   const router = useRouter();
 
   const handleCancelPlan = async () => {
     try {
-      await api.post("/api/cancelplan", {
-        id: id,
-      });
+      await api.post("/api/cancelsubscription");
 
       toast({
         title: "Plano Cancelado",

@@ -20,7 +20,7 @@ const Footer = () => {
 
   return (
     <footer className="flex flex-col gap-8">
-      <div className=" hidden flex-col gap-4 px-8 py-4 lg:flex">
+      {/*   <div className=" hidden flex-col gap-4 px-8 py-4 lg:flex">
         <p className=" text-sm font-medium uppercase text-muted-foreground">
           Links Extras
         </p>
@@ -38,7 +38,7 @@ const Footer = () => {
             Site
           </Link>
         </div>
-      </div>
+      </div> */}
 
       <div className="flex items-center justify-center border-t border-border py-2 lg:justify-start lg:px-4 ">
         {status == "unauthenticated" && (

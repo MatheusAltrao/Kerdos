@@ -1,5 +1,3 @@
-// pages/api/stripe-webhook.js
-
 import { prismaClient } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
@@ -35,14 +33,13 @@ export async function POST(req: Request) {
           data: {
             isPlanActive: true,
             planStartDate: new Date(),
+            stripeSubscriptionId: session.subscription as string,
           },
         });
         break;
       default:
         console.log(`Unhandled event type: ${event.type}`);
     }
-
-    console.log(event.type);
 
     return NextResponse.json({ received: true });
   } catch (err) {
