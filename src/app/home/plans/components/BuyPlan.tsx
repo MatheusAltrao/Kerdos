@@ -1,6 +1,6 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { createCheckout } from "@/actions/checkout";
+import { Button } from "@/components/ui/button";
 import { loadStripe } from "@stripe/stripe-js";
 
 const BuyPlan = () => {
@@ -13,7 +13,7 @@ const BuyPlan = () => {
   };
 
   return (
-    <Button onClick={handleSubscriptionPlan} variant={"outline"}>
+    <Button onClick={handleSubscriptionPlan} variant={"default"}>
       Assinar plano Profissional
     </Button>
   );
