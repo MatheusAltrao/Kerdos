@@ -87,7 +87,7 @@ const Dashboard = () => {
   return (
     <Header name="Dashboard">
       <Container>
-        <div className="w-full space-y-8">
+        <div className="grid w-full gap-8 ">
           <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
             <Card
               amount={depositAmount}

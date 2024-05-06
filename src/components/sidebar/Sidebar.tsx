@@ -14,7 +14,7 @@ const Sidebar = ({ children }: SidebarProps) => {
 
   return (
     <main className="flex h-screen w-screen flex-1">
-      <div className="grid w-full grid-cols-[60px_5fr] lg:grid-cols-[1fr_5fr]">
+      <div className="grid h-screen w-full  grid-cols-[60px_5fr] lg:grid-cols-[1fr_5fr]">
         <div className="flex flex-1 flex-col border-r border-border ">
           <Header />
 
@@ -25,6 +25,7 @@ const Sidebar = ({ children }: SidebarProps) => {
             </div>
           </div>
         </div>
+
         {children}
       </div>
     </main>

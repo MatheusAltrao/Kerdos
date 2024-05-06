@@ -22,7 +22,7 @@ const CancelPlan = () => {
 
       toast({
         title: "Plano Cancelado",
-        description: "Vocẽ está no plano gratuito ",
+        description: "Você está no plano gratuito ",
       });
 
       router.refresh();

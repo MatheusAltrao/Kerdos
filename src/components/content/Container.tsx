@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { ScrollArea } from "../ui/scroll-area";
 
 interface ContainerProps {
   children: ReactNode;
@@ -8,10 +7,10 @@ interface ContainerProps {
 
 const Container = ({ children, className }: ContainerProps) => {
   return (
-    <div className={`flex  flex-1 px-4 py-4 lg:px-8 ${className}`}>
-      <ScrollArea className="flex h-[90vh] w-full flex-1 overflow-y-auto   lg:pr-4  ">
+    <div className={`flex h-screen flex-1   px-4 py-4 lg:px-8 ${className}`}>
+      <div className="  h-[85vh] w-full   overflow-y-auto pr-2    ">
         {children}
-      </ScrollArea>
+      </div>
     </div>
   );
 };

@@ -16,7 +16,7 @@ const Home = async ({ children }: HomeProps) => {
 
   return (
     <Sidebar>
-      <div className="flex h-full flex-1 overflow-hidden">{children}</div>
+      <div className="flex h-full flex-1 overflow-hidden   ">{children}</div>
     </Sidebar>
   );
 };
