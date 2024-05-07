@@ -16,14 +16,14 @@ const ActiveLink = ({ pathname, href, name, icon }: ActiveLinkProps) => {
     <Link href={href}>
       <Button
         size={"sm"}
-        className={`flex  items-center justify-start gap-4 bg-transparent xl:w-full ${
+        className={`flex w-full  items-center justify-start gap-4 bg-transparent xl:w-full ${
           activeLink && "bg-muted"
         }`}
         variant={"ghost"}
       >
         {icon}
 
-        <span className="hidden xl:block"> {name}</span>
+        <span> {name}</span>
       </Button>
     </Link>
   );

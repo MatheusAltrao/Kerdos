@@ -14,8 +14,8 @@ const Sidebar = ({ children }: SidebarProps) => {
 
   return (
     <main className="flex h-screen w-screen  flex-1 overflow-hidden   ">
-      <div className="grid w-full grid-cols-[60px_5fr]  xl:grid-cols-[1fr_5fr]">
-        <div className="flex flex-1 flex-col border-r border-border ">
+      <div className=" grid w-full  lg:grid-cols-[1fr_5fr]">
+        <div className=" hidden flex-1 flex-col border-r border-border xl:flex ">
           <Header />
 
           <div className="flex w-full flex-1 flex-col justify-between  ">

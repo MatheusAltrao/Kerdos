@@ -43,12 +43,12 @@ const Footer = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             {status == "authenticated" && (
-              <div className="flex cursor-pointer  items-center gap-2 rounded px-4 py-2 transition-colors hover:bg-muted">
+              <div className="flex w-full cursor-pointer  items-center gap-2 rounded px-4 py-2 transition-colors hover:bg-muted">
                 <Avatar>
                   <AvatarImage src={data.user?.image!} />
                   <AvatarFallback>MA</AvatarFallback>
                 </Avatar>
-                <p className="hidden truncate text-sm font-medium text-muted-foreground xl:block">
+                <p className=" truncate text-sm font-medium text-muted-foreground ">
                   {data.user?.name}
                 </p>
               </div>
