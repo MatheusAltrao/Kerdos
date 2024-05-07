@@ -1,5 +1,7 @@
 "use client";
 import Pie from "@/components/charts/Pie";
+import Container from "@/components/content/Container";
+import Header from "@/components/content/Header";
 import useDateRange from "@/hooks/useDateRange";
 import { FinancesProps } from "@/utils/finances.type";
 import axios from "axios";
@@ -83,69 +85,71 @@ const Dashboard = () => {
   const verifyPaymentType = withdraw === 0 && deposit === 0;
 
   return (
-    <div className=" flex w-full flex-1 flex-col gap-8 bg-blue-500 px-4 py-4 xl:px-8">
-      <div className="grid w-full grid-cols-1 gap-6 xl:grid-cols-3">
-        <Card
-          amount={depositAmount}
-          title="Entradas"
-          description="Soma de todas as entradas"
-          icon={<ArrowUp size={16} />}
-        />
-        <Card
-          amount={withdrawAmount}
-          title="Saídas"
-          description="Soma de todas as saídas"
-          icon={<ArrowDown size={16} />}
-        />
+    <Header name="Dashboard">
+      <Container>
+        <div className="grid w-full grid-cols-1 gap-6 xl:grid-cols-3">
+          <Card
+            amount={depositAmount}
+            title="Entradas"
+            description="Soma de todas as entradas"
+            icon={<ArrowUp size={16} />}
+          />
+          <Card
+            amount={withdrawAmount}
+            title="Saídas"
+            description="Soma de todas as saídas"
+            icon={<ArrowDown size={16} />}
+          />
 
-        <Card
-          amount={total}
-          title="Valor Total"
-          description="Soma de todas as finanças"
-          icon={<DollarSign size={16} />}
-        />
-      </div>
-
-      <div className="grid  grid-cols-1 gap-6 xl:grid-cols-2">
-        <div className="flex h-[400px]  items-center justify-center rounded-lg bg-muted p-8">
-          {verifyPaymentMethods ? (
-            <div className="flex flex-col items-center justify-center gap-1">
-              <h2 className="text-lg font-medium">
-                Nenhuma Transação Encontrada
-              </h2>
-              <p className="text-sm opacity-80">
-                Atualmente não há dados de transações para exibir.
-              </p>
-            </div>
-          ) : (
-            <Pie
-              colors={["#38bdf8", "#0ea5e9", "#0284c7", "#0369a1", "#075985"]}
-              labels={["PIX", "Dinheiro", "Boleto", "Crédito", "Débito"]}
-              values={[pix, money, bankSlip, credit, debit]}
-            />
-          )}
+          <Card
+            amount={total}
+            title="Valor Total"
+            description="Soma de todas as finanças"
+            icon={<DollarSign size={16} />}
+          />
         </div>
 
-        <div className="flex h-[400px] items-center justify-center rounded-lg bg-muted p-8">
-          {verifyPaymentType ? (
-            <div className="flex flex-col items-center justify-center gap-1">
-              <h2 className="text-lg font-medium">
-                Nenhuma Transação Encontrada
-              </h2>
-              <p className="text-sm opacity-80">
-                Atualmente não há dados de transações para exibir.
-              </p>
-            </div>
-          ) : (
-            <Pie
-              colors={["#16a34a", "#dc2626"]}
-              labels={["Entrada", "Saída"]}
-              values={[deposit, withdraw]}
-            />
-          )}
+        <div className="grid  grid-cols-1 gap-6 xl:grid-cols-2">
+          <div className="flex h-[400px]  items-center justify-center rounded-lg bg-muted p-8">
+            {verifyPaymentMethods ? (
+              <div className="flex flex-col items-center justify-center gap-1">
+                <h2 className="text-lg font-medium">
+                  Nenhuma Transação Encontrada
+                </h2>
+                <p className="text-sm opacity-80">
+                  Atualmente não há dados de transações para exibir.
+                </p>
+              </div>
+            ) : (
+              <Pie
+                colors={["#38bdf8", "#0ea5e9", "#0284c7", "#0369a1", "#075985"]}
+                labels={["PIX", "Dinheiro", "Boleto", "Crédito", "Débito"]}
+                values={[pix, money, bankSlip, credit, debit]}
+              />
+            )}
+          </div>
+
+          <div className="flex h-[400px] items-center justify-center rounded-lg bg-muted p-8">
+            {verifyPaymentType ? (
+              <div className="flex flex-col items-center justify-center gap-1">
+                <h2 className="text-lg font-medium">
+                  Nenhuma Transação Encontrada
+                </h2>
+                <p className="text-sm opacity-80">
+                  Atualmente não há dados de transações para exibir.
+                </p>
+              </div>
+            ) : (
+              <Pie
+                colors={["#16a34a", "#dc2626"]}
+                labels={["Entrada", "Saída"]}
+                values={[deposit, withdraw]}
+              />
+            )}
+          </div>
         </div>
-      </div>
-    </div>
+      </Container>
+    </Header>
   );
 };
 

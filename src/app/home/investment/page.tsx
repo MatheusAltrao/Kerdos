@@ -1,3 +1,5 @@
+import Container from "@/components/content/Container";
+import Header from "@/components/content/Header";
 import { Separator } from "@/components/ui/separator";
 import CoinsCard from "./components/CoinsCard";
 import StockCard from "./components/StockCard";
@@ -112,46 +114,50 @@ const Investiment = async () => {
   const selic = fetchTaxesArray.map((item: any) => item.selic);
 
   return (
-    <div className=" flex w-full flex-1 flex-col gap-8 overflow-y-auto px-4 py-4 xl:px-8 ">
-      <div className="space-y-4">
-        <h2 className="font-medium uppercase text-muted-foreground">Moedas</h2>
-        <div className="grid w-full grid-cols-1 gap-4  xl:grid-cols-4">
-          {currencies.map((currencie, index) => (
-            <CoinsCard
-              key={index}
-              name={currencie.name}
-              buy={currencie.buy}
-              variation={currencie.variation}
-            />
-          ))}
+    <Header name="Investimentos">
+      <Container>
+        <div className="space-y-4">
+          <h2 className="font-medium uppercase text-muted-foreground">
+            Moedas
+          </h2>
+          <div className="grid w-full grid-cols-1 gap-4  xl:grid-cols-4">
+            {currencies.map((currencie, index) => (
+              <CoinsCard
+                key={index}
+                name={currencie.name}
+                buy={currencie.buy}
+                variation={currencie.variation}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <Separator />
+        <Separator />
 
-      <div className="space-y-4">
-        <h2 className="font-medium uppercase text-muted-foreground">Ações</h2>
-        <div className="grid w-full  grid-cols-1 gap-4  xl:grid-cols-4">
-          {stocks.map((stock, index) => (
-            <StockCard
-              key={index}
-              name={stock.name}
-              variation={stock.variation}
-            />
-          ))}
+        <div className="space-y-4">
+          <h2 className="font-medium uppercase text-muted-foreground">Ações</h2>
+          <div className="grid w-full  grid-cols-1 gap-4  xl:grid-cols-4">
+            {stocks.map((stock, index) => (
+              <StockCard
+                key={index}
+                name={stock.name}
+                variation={stock.variation}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <Separator />
+        <Separator />
 
-      <div className="space-y-4">
-        <h2 className="font-medium uppercase text-muted-foreground">Taxas</h2>
-        <div className="grid w-full grid-cols-1 gap-4 xl:grid-cols-4">
-          <TaxesCard name="CDI" amount={cdi} />
-          <TaxesCard name="Selic" amount={selic} />
+        <div className="space-y-4">
+          <h2 className="font-medium uppercase text-muted-foreground">Taxas</h2>
+          <div className="grid w-full grid-cols-1 gap-4 xl:grid-cols-4">
+            <TaxesCard name="CDI" amount={cdi} />
+            <TaxesCard name="Selic" amount={selic} />
+          </div>
         </div>
-      </div>
-    </div>
+      </Container>
+    </Header>
   );
 };
 
