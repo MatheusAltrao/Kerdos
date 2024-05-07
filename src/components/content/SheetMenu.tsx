@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 const SheetMenu = () => {
   return (
     <Sheet>
-      <SheetTrigger className="lg:hidden">
+      <SheetTrigger className="lg:hidden" asChild>
         <Button size={"icon"} variant={"outline"}>
           <Menu size={20} />
         </Button>
