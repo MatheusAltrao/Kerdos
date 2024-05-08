@@ -6,7 +6,7 @@ import Stripe from "stripe";
 export const createCheckout = async () => {
   const session = await getServerSession(authOptions);
 
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
     apiVersion: "2023-10-16",
   });
 
