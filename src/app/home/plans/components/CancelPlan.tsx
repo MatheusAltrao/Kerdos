@@ -26,10 +26,11 @@ const CancelPlan = () => {
       });
 
       router.refresh();
-    } catch (error) {
+    } catch (error: any) {
+      console.log("Erro ao cancelar plano:", error.message);
       toast({
         title: "Erro",
-        description: "Ocorreu um erro inesperado. ",
+        description: "Ocorreu um erro inesperado: " + error.message,
       });
     }
   };

@@ -15,12 +15,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not Authorized" }, { status: 401 });
   }
 
+  console.log("Sessão obtida:", session);
+
   const user = await prismaClient.user.findUnique({
     where: { id: session.user.id },
   });
 
+  console.log("Usuário encontrado:", user);
+
   try {
     if (!user?.stripeSubscriptionId) {
+      console.error("ID da assinatura não encontrada para o usuário.");
       return NextResponse.json(
         { error: "No active subscription found" },
         { status: 404 },
@@ -30,6 +35,7 @@ export async function POST(req: NextRequest) {
     const cancelledSubscription = await stripe.subscriptions.cancel(
       user?.stripeSubscriptionId,
     );
+    console.log("Assinatura cancelada:", cancelledSubscription);
 
     await prismaClient.user.update({
       where: {
@@ -42,13 +48,8 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    return NextResponse.json({
-      message: "Plan updated successfully",
-    });
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to update user" },
-      { status: 500 },
-    );
+    return NextResponse.json({ message: "Plan updated successfully" });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
