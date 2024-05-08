@@ -22,7 +22,7 @@ export const createCheckout = async () => {
       line_items: [
         {
           quantity: 1,
-          price: "price_1Oz8qLHGpco14sBwIrI2ehWu",
+          price: process.env.STRIPE_PRICE_ID as string,
         },
       ],
     });
