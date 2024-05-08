@@ -82,7 +82,7 @@ const Plans = async () => {
                   </ul>
                   <div className="flex items-center justify-between gap-4">
                     <div className="self-start">
-                      <div className="text-2xl font-semibold">R$ 9,90</div>
+                      <div className="text-2xl font-semibold">R$ 19,90</div>
                       <p className="text-xs text-muted-foreground">Por mês</p>
                     </div>
                   </div>
