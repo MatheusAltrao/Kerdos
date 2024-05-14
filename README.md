@@ -1,4 +1,4 @@
-<h1 align="center"> Holiday Plan </h1> <br>
+<h1 align="center"> Kerdos </h1> <br>
 <p align="center">
     <img src="https://i.pinimg.com/originals/2c/1d/27/2c1d2765695234ee48c45809ed033bc1.png" alt="Kerdos">
 </p>
