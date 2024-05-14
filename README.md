@@ -64,7 +64,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 -   Axios: Handles API requests, ensuring smooth and efficient data transfer.
 
--   Prisma: As our ORM (Object-Relational Mapping), Prisma allows us to interact with the MongoDB database in a more intuitive and safe manner, simplifying database operations with its schema definition model and high-level queries.<br />
+-   Prisma: As our ORM (Object-Relational Mapping), Prisma allows us to interact with the Supabase database in a more intuitive and safe manner, simplifying database operations with its schema definition model and high-level queries.<br />
 
 -   Stripe: Implements subscription management and payment processing.<br />
 
