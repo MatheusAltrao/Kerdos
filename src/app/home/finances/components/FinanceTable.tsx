@@ -133,48 +133,40 @@ const FinanceTable = ({
             </TableHeader>
 
             <TableBody>
-              <AnimatePresence>
-                {finances.slice(first, first + rows).map((finance) => (
-                  <motion.tr
-                    key={finance.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {columnVisibility.Nome && (
-                      <TableCell className="relative gap-1 pl-8 font-medium">
-                        <Ball status={finance.transactionType} />
-                        {finance.name}
-                      </TableCell>
-                    )}
-                    {columnVisibility.MétodoDePagamento && (
-                      <TableCell>{finance.paymentMethod}</TableCell>
-                    )}
-                    {columnVisibility.Categoria && (
-                      <TableCell>{finance.category}</TableCell>
-                    )}
-                    {columnVisibility.Valor && (
-                      <TableCell>
-                        {formatAmount(Number(finance.amount))}
-                      </TableCell>
-                    )}
-                    {columnVisibility.Data && (
-                      <TableCell>
-                        {formatDate(finance.date, "dd/MM/yyyy")}
-                      </TableCell>
-                    )}
-                    {columnVisibility.Banco && (
-                      <TableCell>{finance.bank}</TableCell>
-                    )}
-                    {columnVisibility.Ações && (
-                      <TableCell className="space-x-2 text-right">
-                        <ActionsButtons financeID={finance.id} />
-                      </TableCell>
-                    )}
-                  </motion.tr>
-                ))}
-              </AnimatePresence>
+              {finances.slice(first, first + rows).map((finance) => (
+                <TableRow key={finance.id}>
+                  {columnVisibility.Nome && (
+                    <TableCell className="relative gap-1 pl-8 font-medium">
+                      <Ball status={finance.transactionType} />
+                      {finance.name}
+                    </TableCell>
+                  )}
+                  {columnVisibility.MétodoDePagamento && (
+                    <TableCell>{finance.paymentMethod}</TableCell>
+                  )}
+                  {columnVisibility.Categoria && (
+                    <TableCell>{finance.category}</TableCell>
+                  )}
+                  {columnVisibility.Valor && (
+                    <TableCell>
+                      {formatAmount(Number(finance.amount))}
+                    </TableCell>
+                  )}
+                  {columnVisibility.Data && (
+                    <TableCell>
+                      {formatDate(finance.date, "dd/MM/yyyy")}
+                    </TableCell>
+                  )}
+                  {columnVisibility.Banco && (
+                    <TableCell>{finance.bank}</TableCell>
+                  )}
+                  {columnVisibility.Ações && (
+                    <TableCell className="space-x-2 text-right">
+                      <ActionsButtons financeID={finance.id} />
+                    </TableCell>
+                  )}
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </div>

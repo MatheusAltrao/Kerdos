@@ -1,15 +1,17 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
 interface ActiveLinkProps {
-  pathname: string;
   href: string;
   name: string;
   icon: ReactNode;
 }
 
-const ActiveLink = ({ pathname, href, name, icon }: ActiveLinkProps) => {
+const ActiveLink = ({ href, name, icon }: ActiveLinkProps) => {
+  const pathname = usePathname();
   const activeLink = pathname.startsWith(href);
 
   return (
