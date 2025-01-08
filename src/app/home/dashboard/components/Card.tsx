@@ -1,12 +1,12 @@
-"use client";
-import { ReactNode } from "react";
-import CountUp from "react-countup";
+'use client'
+import { ReactNode } from 'react'
+import CountUp from 'react-countup'
 
 interface CardProps {
-  title: string;
-  icon: ReactNode;
-  amount: number;
-  description: string;
+  title: string
+  icon: ReactNode
+  amount: number
+  description: string
 }
 
 const Card = ({ title, amount, description, icon }: CardProps) => {
@@ -19,7 +19,7 @@ const Card = ({ title, amount, description, icon }: CardProps) => {
       <div>
         <div className="flex items-center gap-1">
           <p className="text-2xl font-bold">
-            R${" "}
+            R${' '}
             <CountUp
               start={0}
               end={amount}
@@ -29,13 +29,13 @@ const Card = ({ title, amount, description, icon }: CardProps) => {
               useGrouping={true}
               separator="."
               useEasing={true}
-            />{" "}
+            />{' '}
           </p>
         </div>
         <p className="text-xs   opacity-60 ">{description}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

@@ -1,16 +1,16 @@
-"use client";
-import { useSession } from "next-auth/react";
-import { ReactNode } from "react";
-import Footer from "./Footer";
-import Header from "./Header";
-import Navigation from "./Navigation";
+'use client'
+import { useSession } from 'next-auth/react'
+import { ReactNode } from 'react'
+import Footer from './Footer'
+import Header from './Header'
+import Navigation from './Navigation'
 
 interface SidebarProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 const Sidebar = ({ children }: SidebarProps) => {
-  const { data } = useSession();
+  const { data } = useSession()
 
   return (
     <main className="flex min-h-screen w-screen  flex-1 overflow-hidden   ">
@@ -27,7 +27,7 @@ const Sidebar = ({ children }: SidebarProps) => {
         <div className="min-h-screen overflow-y-auto ">{children}</div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

@@ -1,8 +1,8 @@
-import { ChevronLeft } from "lucide-react";
-import Link from "next/link";
+import { ChevronLeft } from 'lucide-react'
+import Link from 'next/link'
 
 interface BackProps {
-  href: string;
+  href: string
 }
 
 const Back = ({ href }: BackProps) => {
@@ -17,7 +17,7 @@ const Back = ({ href }: BackProps) => {
         </div>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default Back;
+export default Back

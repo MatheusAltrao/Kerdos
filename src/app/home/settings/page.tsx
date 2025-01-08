@@ -1,13 +1,13 @@
-import Container from "@/components/content/Container";
-import Header from "@/components/content/Header";
+import Container from '@/components/content/Container'
+import Header from '@/components/content/Header'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import DropdownTheme from "./components/theme/DropdownTheme";
+} from '@/components/ui/card'
+import DropdownTheme from './components/theme/DropdownTheme'
 
 const Settings = () => {
   return (
@@ -38,7 +38,7 @@ const Settings = () => {
         </div>
       </Container>
     </Header>
-  );
-};
+  )
+}
 
-export default Settings;
+export default Settings

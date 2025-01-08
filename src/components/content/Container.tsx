@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 interface ContainerProps {
-  children: ReactNode;
-  className?: string;
+  children: ReactNode
+  className?: string
 }
 
 const Container = ({ children, className }: ContainerProps) => {
@@ -12,7 +12,7 @@ const Container = ({ children, className }: ContainerProps) => {
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default Container;
+export default Container

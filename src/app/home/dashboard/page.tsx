@@ -1,88 +1,89 @@
-"use client";
-import Pie from "@/components/charts/Pie";
-import Container from "@/components/content/Container";
-import Header from "@/components/content/Header";
-import useDateRange from "@/hooks/useDateRange";
-import { FinancesProps } from "@/utils/finances.type";
-import axios from "axios";
-import { ArrowDown, ArrowUp, DollarSign } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
-import Card from "./components/Card";
+'use client'
+import Pie from '@/components/charts/Pie'
+import Container from '@/components/content/Container'
+import Header from '@/components/content/Header'
+import useDateRange from '@/hooks/useDateRange'
+import { FinancesProps } from '@/utils/finances.type'
+import axios from 'axios'
+import { ArrowDown, ArrowUp, DollarSign } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useEffect, useMemo, useState } from 'react'
+import Card from './components/Card'
+import { Button } from '@/components/ui/button'
 
 const Dashboard = () => {
-  const [startDate, setStartDate] = useState<Date | undefined>(new Date());
-  const [endDate, setEndDate] = useState<Date | undefined>(undefined);
-  useDateRange(startDate, endDate, setEndDate);
-  const router = useRouter();
-  const [finances, setFinances] = useState<FinancesProps[]>([]);
+  const [startDate, setStartDate] = useState<Date | undefined>(new Date())
+  const [endDate, setEndDate] = useState<Date | undefined>(undefined)
+  useDateRange(startDate, endDate, setEndDate)
+  const router = useRouter()
+  const [finances, setFinances] = useState<FinancesProps[]>([])
 
   useEffect(() => {
     const handleReadFinances = async () => {
       try {
-        const response = await axios.get("/api/finances");
-        setFinances(response.data);
-        router.refresh();
+        const response = await axios.get('/api/finances')
+        setFinances(response.data)
+        router.refresh()
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
+    }
 
-    handleReadFinances();
-  }, []);
+    handleReadFinances()
+  }, [])
 
   const withdrawAmount = useMemo(() => {
     return finances
-      .filter((finance) => finance.transactionType === "Saída")
-      .reduce((total, finance) => total + Number(finance.amount), 0);
-  }, [finances]);
+      .filter((finance) => finance.transactionType === 'Saída')
+      .reduce((total, finance) => total + Number(finance.amount), 0)
+  }, [finances])
 
   const depositAmount = useMemo(() => {
     return finances
-      .filter((finance) => finance.transactionType == "Entrada")
-      .reduce((total, finance) => total + Number(finance.amount), 0);
-  }, [finances]);
+      .filter((finance) => finance.transactionType === 'Entrada')
+      .reduce((total, finance) => total + Number(finance.amount), 0)
+  }, [finances])
 
-  const total = depositAmount - withdrawAmount;
+  const total = depositAmount - withdrawAmount
 
   const pix = useMemo(() => {
-    return finances.filter((finance) => finance.paymentMethod == "PIX").length;
-  }, [finances]);
+    return finances.filter((finance) => finance.paymentMethod === 'PIX').length
+  }, [finances])
 
   const money = useMemo(() => {
-    return finances.filter((finance) => finance.paymentMethod == "Dinheiro")
-      .length;
-  }, [finances]);
+    return finances.filter((finance) => finance.paymentMethod === 'Dinheiro')
+      .length
+  }, [finances])
 
   const bankSlip = useMemo(() => {
-    return finances.filter((finance) => finance.paymentMethod == "Boleto")
-      .length;
-  }, [finances]);
+    return finances.filter((finance) => finance.paymentMethod === 'Boleto')
+      .length
+  }, [finances])
 
   const credit = useMemo(() => {
-    return finances.filter((finance) => finance.paymentMethod == "Crédito")
-      .length;
-  }, [finances]);
+    return finances.filter((finance) => finance.paymentMethod === 'Crédito')
+      .length
+  }, [finances])
 
   const debit = useMemo(() => {
-    return finances.filter((finance) => finance.paymentMethod == "Débito")
-      .length;
-  }, [finances]);
+    return finances.filter((finance) => finance.paymentMethod === 'Débito')
+      .length
+  }, [finances])
 
   const withdraw = useMemo(() => {
-    return finances.filter((finance) => finance.transactionType == "Saída")
-      .length;
-  }, [finances]);
+    return finances.filter((finance) => finance.transactionType === 'Saída')
+      .length
+  }, [finances])
 
   const deposit = useMemo(() => {
-    return finances.filter((finance) => finance.transactionType == "Entrada")
-      .length;
-  }, [finances]);
+    return finances.filter((finance) => finance.transactionType === 'Entrada')
+      .length
+  }, [finances])
 
   const verifyPaymentMethods =
-    pix === 0 && credit === 0 && bankSlip === 0 && debit === 0 && money === 0;
+    pix === 0 && credit === 0 && bankSlip === 0 && debit === 0 && money === 0
 
-  const verifyPaymentType = withdraw === 0 && deposit === 0;
+  const verifyPaymentType = withdraw === 0 && deposit === 0
 
   return (
     <Header name="Dashboard">
@@ -122,8 +123,8 @@ const Dashboard = () => {
               </div>
             ) : (
               <Pie
-                colors={["#38bdf8", "#0ea5e9", "#0284c7", "#0369a1", "#075985"]}
-                labels={["PIX", "Dinheiro", "Boleto", "Crédito", "Débito"]}
+                colors={['#38bdf8', '#0ea5e9', '#0284c7', '#0369a1', '#075985']}
+                labels={['PIX', 'Dinheiro', 'Boleto', 'Crédito', 'Débito']}
                 values={[pix, money, bankSlip, credit, debit]}
               />
             )}
@@ -141,8 +142,8 @@ const Dashboard = () => {
               </div>
             ) : (
               <Pie
-                colors={["#16a34a", "#dc2626"]}
-                labels={["Entrada", "Saída"]}
+                colors={['#16a34a', '#dc2626']}
+                labels={['Entrada', 'Saída']}
                 values={[deposit, withdraw]}
               />
             )}
@@ -150,7 +151,7 @@ const Dashboard = () => {
         </div>
       </Container>
     </Header>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

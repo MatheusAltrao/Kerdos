@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import {
   Dialog,
   DialogContent,
@@ -7,10 +7,10 @@ import {
   DialogOverlay,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { DialogClose } from "@radix-ui/react-dialog";
-import { Plus, X } from "lucide-react";
-import Link from "next/link";
+} from '@/components/ui/dialog'
+import { DialogClose } from '@radix-ui/react-dialog'
+import { Plus, X } from 'lucide-react'
+import Link from 'next/link'
 
 const Alert = () => {
   return (
@@ -37,14 +37,14 @@ const Alert = () => {
             <div className="flex items-center gap-4">
               <DialogClose type="button" className="w-full">
                 <div className="flex h-9 w-full items-center justify-center gap-2 rounded-md bg-red-700 px-4 text-sm font-medium text-zinc-50 transition-colors hover:bg-red-800 ">
-                  Cancelar <X size={16} />{" "}
+                  Cancelar <X size={16} />{' '}
                 </div>
               </DialogClose>
 
               <DialogClose className="w-full" type="submit">
-                <Link href={"/home/plans"}>
+                <Link href={'/home/plans'}>
                   <div className="flex h-9 w-full items-center justify-center gap-2 rounded-md bg-sky-500 px-4 text-sm font-medium text-zinc-50 transition-colors hover:bg-sky-600 ">
-                    Ver Planos <Plus size={16} />{" "}
+                    Ver Planos <Plus size={16} />{' '}
                   </div>
                 </Link>
               </DialogClose>
@@ -53,7 +53,7 @@ const Alert = () => {
         </DialogContent>
       </DialogOverlay>
     </Dialog>
-  );
-};
+  )
+}
 
-export default Alert;
+export default Alert

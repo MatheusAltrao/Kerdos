@@ -1,14 +1,14 @@
-"use client";
-import { Menu } from "lucide-react";
-import Footer from "../sidebar/Footer";
-import Navigation from "../sidebar/Navigation";
-import { Button } from "../ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+'use client'
+import { Menu } from 'lucide-react'
+import Footer from '../sidebar/Footer'
+import Navigation from '../sidebar/Navigation'
+import { Button } from '../ui/button'
+import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 const SheetMenu = () => {
   return (
     <Sheet>
       <SheetTrigger className="lg:hidden" asChild>
-        <Button size={"icon"} variant={"outline"}>
+        <Button size={'icon'} variant={'outline'}>
           <Menu size={20} />
         </Button>
       </SheetTrigger>
@@ -17,7 +17,7 @@ const SheetMenu = () => {
         <Footer />
       </SheetContent>
     </Sheet>
-  );
-};
+  )
+}
 
-export default SheetMenu;
+export default SheetMenu

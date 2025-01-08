@@ -1,5 +1,5 @@
-import Image from "next/image";
-import LogoSvg from "../../../public/logoSvg.svg";
+import Image from 'next/image'
+import LogoSvg from '../../../public/logoSvg.svg'
 
 const Header = () => {
   return (
@@ -16,7 +16,7 @@ const Header = () => {
         <h1 className=" hidden text-lg  font-bold xl:block">Kerdos</h1>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

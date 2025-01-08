@@ -1,38 +1,38 @@
-import Back from "@/components/content/Back";
-import Container from "@/components/content/Container";
-import Header from "@/components/content/Header";
+import Back from '@/components/content/Back'
+import Container from '@/components/content/Container'
+import Header from '@/components/content/Header'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { authOptions } from "@/lib/auth";
-import { prismaClient } from "@/lib/prisma";
-import formatAmount from "@/utils/formatAmout";
-import { formatDate } from "date-fns";
-import { getServerSession } from "next-auth";
+} from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { authOptions } from '@/lib/auth'
+import { prismaClient } from '@/lib/prisma'
+import formatAmount from '@/utils/formatAmout'
+import { formatDate } from 'date-fns'
+import { getServerSession } from 'next-auth'
 
 interface FinanceIDProps {
   params: {
-    id: string;
-  };
+    id: string
+  }
 }
 
 const FinanceID = async ({ params }: FinanceIDProps) => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions)
 
   const finance = await prismaClient.finances.findFirst({
     where: {
       userId: session?.user.id,
       id: params.id,
     },
-  });
+  })
 
-  console.log(finance);
+  console.log(finance)
 
   return (
     <Header name="Finanças">
@@ -98,7 +98,7 @@ const FinanceID = async ({ params }: FinanceIDProps) => {
                   type="text"
                   className="w-full"
                   defaultValue={String(
-                    formatDate(finance?.date!, "dd/MM/yyyy"),
+                    formatDate(finance?.date!, 'dd/MM/yyyy'),
                   )}
                   readOnly
                 />
@@ -130,7 +130,7 @@ const FinanceID = async ({ params }: FinanceIDProps) => {
         </Card>
       </Container>
     </Header>
-  );
-};
+  )
+}
 
-export default FinanceID;
+export default FinanceID

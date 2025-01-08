@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { X } from "lucide-react";
-import Link from "next/link";
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
+import { X } from 'lucide-react'
+import Link from 'next/link'
 
 const Cancel = () => {
   return (
@@ -22,11 +22,11 @@ const Cancel = () => {
           <CardContent className="grid gap-4">
             <div className="flex items-center justify-between">
               <div className="font-medium ">Produto</div>
-              <p className=" text-muted-foreground">Kerdos</p>{" "}
+              <p className=" text-muted-foreground">Kerdos</p>{' '}
             </div>
             <div className="flex items-center justify-between">
               <div className="font-medium">Quantidade</div>
-              <p className=" text-muted-foreground">0</p>{" "}
+              <p className=" text-muted-foreground">0</p>{' '}
             </div>
             <Separator />
             <div className="flex items-center justify-between font-medium">
@@ -36,14 +36,14 @@ const Cancel = () => {
           </CardContent>
         </Card>
         <Link href="/">
-          <Button className="w-full" variant={"default"}>
-            {" "}
+          <Button className="w-full" variant={'default'}>
+            {' '}
             Voltar para o Kerdos
           </Button>
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cancel;
+export default Cancel

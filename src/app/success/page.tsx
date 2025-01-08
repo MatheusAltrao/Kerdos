@@ -1,23 +1,23 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { authOptions } from "@/lib/auth";
-import { prismaClient } from "@/lib/prisma";
-import { CheckCircleIcon } from "lucide-react";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
+import { authOptions } from '@/lib/auth'
+import { prismaClient } from '@/lib/prisma'
+import { CheckCircleIcon } from 'lucide-react'
+import { getServerSession } from 'next-auth'
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 const Success = async () => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions)
 
   if (!session || !session.user) {
-    redirect("/");
+    redirect('/')
   }
 
   const user = await prismaClient.user.findUnique({
     where: { id: session.user.id },
-  });
+  })
 
   if (user?.isPlanActive) {
     return (
@@ -37,11 +37,11 @@ const Success = async () => {
             <CardContent className="grid gap-4">
               <div className="flex items-center justify-between">
                 <div className="font-medium ">Produto</div>
-                <p className=" text-muted-foreground">Kerdos</p>{" "}
+                <p className=" text-muted-foreground">Kerdos</p>{' '}
               </div>
               <div className="flex items-center justify-between">
                 <div className="font-medium">Quantidade</div>
-                <p className=" text-muted-foreground">1</p>{" "}
+                <p className=" text-muted-foreground">1</p>{' '}
               </div>
               <Separator />
               <div className="flex items-center justify-between font-medium">
@@ -51,17 +51,17 @@ const Success = async () => {
             </CardContent>
           </Card>
           <Link href="/">
-            <Button className="w-full" variant={"default"}>
-              {" "}
+            <Button className="w-full" variant={'default'}>
+              {' '}
               Voltar para o Kerdos
             </Button>
           </Link>
         </div>
       </div>
-    );
+    )
   } else {
-    redirect("/");
+    redirect('/')
   }
-};
+}
 
-export default Success;
+export default Success

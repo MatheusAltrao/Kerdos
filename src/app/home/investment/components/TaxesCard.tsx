@@ -1,28 +1,25 @@
-import { Coins, Landmark } from "lucide-react";
+import { Coins, Landmark } from 'lucide-react'
 
 interface TaxesCardProps {
-    name: string;
-    amount: number;
+  name: string
+  amount: number
 }
 
 const TaxesCard = ({ name, amount }: TaxesCardProps) => {
-    return (
-        <div className="bg-muted rounded-md flex items-start justify-start gap-3 p-4  " >
+  return (
+    <div className="flex items-start justify-start gap-3 rounded-md bg-muted p-4  ">
+      <div
+        className={` flex size-10  min-w-10 items-center justify-center rounded-full bg-muted-foreground text-secondary`}
+      >
+        <Landmark size={16} />
+      </div>
 
-
-
-            <div className={` bg-muted-foreground text-secondary  rounded-full flex items-center justify-center size-10 min-w-10`} >
-                <Landmark size={16} />
-            </div>
-
-            <div className="flex flex-col -mt-1 " >
-                <h2 className="font-semibold text-base" >{name}</h2>
-                <p className="opacity-60 font-medium  text-sm" >{amount}%</p>
-            </div>
-
-
-        </div>
-    );
+      <div className="-mt-1 flex flex-col ">
+        <h2 className="text-base font-semibold">{name}</h2>
+        <p className="text-sm font-medium  opacity-60">{amount}%</p>
+      </div>
+    </div>
+  )
 }
 
-export default TaxesCard;
+export default TaxesCard

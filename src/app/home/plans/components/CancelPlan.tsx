@@ -1,44 +1,44 @@
-"use client";
-import { Button } from "@/components/ui/button";
+'use client'
+import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogOverlay,
-} from "@/components/ui/dialog";
-import { useToast } from "@/components/ui/use-toast";
-import { api } from "@/lib/api";
-import { DialogTrigger } from "@radix-ui/react-dialog";
-import { ChevronLeft, X } from "lucide-react";
-import { useRouter } from "next/navigation";
+} from '@/components/ui/dialog'
+import { useToast } from '@/components/ui/use-toast'
+import { api } from '@/lib/api'
+import { DialogTrigger } from '@radix-ui/react-dialog'
+import { ChevronLeft, X } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const CancelPlan = () => {
-  const { toast } = useToast();
-  const router = useRouter();
+  const { toast } = useToast()
+  const router = useRouter()
 
   const handleCancelPlan = async () => {
     try {
-      await api.post("/api/cancelsubscription");
+      await api.post('/api/cancelsubscription')
 
       toast({
-        title: "Plano Cancelado",
-        description: "Você está no plano gratuito ",
-      });
+        title: 'Plano Cancelado',
+        description: 'Você está no plano gratuito ',
+      })
 
-      router.refresh();
+      router.refresh()
     } catch (error: any) {
-      console.log("Erro ao cancelar plano:", error.message);
+      console.log('Erro ao cancelar plano:', error.message)
       toast({
-        title: "Erro",
-        description: "Ocorreu um erro inesperado: " + error.message,
-      });
+        title: 'Erro',
+        description: 'Ocorreu um erro inesperado: ' + error.message,
+      })
     }
-  };
+  }
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"destructive"}>Cancelar plano</Button>
+        <Button variant={'destructive'}>Cancelar plano</Button>
       </DialogTrigger>
       <DialogOverlay className="DialogOverlay">
         <DialogContent className="z-20 w-full max-w-[700px] border border-border bg-background  p-8">
@@ -69,7 +69,7 @@ const CancelPlan = () => {
           <div className="flex items-center gap-4">
             <DialogClose type="button" className="w-full">
               <div className="flex h-9 w-full items-center justify-center gap-2 rounded-md bg-muted px-4 text-sm font-medium transition-opacity hover:opacity-80   ">
-                <ChevronLeft size={16} /> Voltar{" "}
+                <ChevronLeft size={16} /> Voltar{' '}
               </div>
             </DialogClose>
             <DialogClose
@@ -85,7 +85,7 @@ const CancelPlan = () => {
         </DialogContent>
       </DialogOverlay>
     </Dialog>
-  );
-};
+  )
+}
 
-export default CancelPlan;
+export default CancelPlan

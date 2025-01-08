@@ -1,17 +1,17 @@
-"use client";
-import Input from "@/components/form/Input";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+'use client'
+import Input from '@/components/form/Input'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
 import {
   DialogContent,
   DialogOverlay,
   DialogPortal,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from '@/components/ui/popover'
 import {
   Select,
   SelectContent,
@@ -19,44 +19,44 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { useToast } from "@/components/ui/use-toast";
-import { api } from "@/lib/api";
-import { cn } from "@/lib/utils";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { DialogClose } from "@radix-ui/react-dialog";
-import { format } from "date-fns";
-import { CalendarIcon, Plus, X } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import z from "zod";
+} from '@/components/ui/select'
+import { useToast } from '@/components/ui/use-toast'
+import { api } from '@/lib/api'
+import { cn } from '@/lib/utils'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { DialogClose } from '@radix-ui/react-dialog'
+import { format } from 'date-fns'
+import { CalendarIcon, Plus, X } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
+import z from 'zod'
 
 const schema = z.object({
-  name: z.string().min(1, "Nome obrigatório"),
-  transactionType: z.string().min(1, "Tipo obrigatório"),
-  category: z.string().min(1, "Categoria obrigatório"),
-  paymentMethod: z.string().min(1, "Método de pagamento obrigatório"),
-  bank: z.string().min(1, "Banco obrigatório"),
+  name: z.string().min(1, 'Nome obrigatório'),
+  transactionType: z.string().min(1, 'Tipo obrigatório'),
+  category: z.string().min(1, 'Categoria obrigatório'),
+  paymentMethod: z.string().min(1, 'Método de pagamento obrigatório'),
+  bank: z.string().min(1, 'Banco obrigatório'),
   amount: z
     .string()
-    .min(1, "Banco obrigatório")
+    .min(1, 'Banco obrigatório')
     .refine(
       (value) => /^\d+$/.test(value),
       "O campo 'Valor' só permite números",
     ),
-});
+})
 
-type IFormData = z.infer<typeof schema>;
+type IFormData = z.infer<typeof schema>
 
 interface AddTransactionProps {
-  userId: string;
+  userId: string
 }
 
 const AddTransaction = ({ userId }: AddTransactionProps) => {
-  const [date, setDate] = useState<Date | undefined>(new Date());
-  const router = useRouter();
-  const { toast } = useToast();
+  const [date, setDate] = useState<Date | undefined>(new Date())
+  const router = useRouter()
+  const { toast } = useToast()
 
   const {
     control,
@@ -66,34 +66,34 @@ const AddTransaction = ({ userId }: AddTransactionProps) => {
     formState: { errors },
   } = useForm<IFormData>({
     resolver: zodResolver(schema),
-  });
+  })
 
   const handleNewTransaction = async (data: IFormData) => {
     try {
-      await api.post("/api/finances", {
+      await api.post('/api/finances', {
         name: data.name,
         transactionType: data.transactionType,
         category: data.category,
         paymentMethod: data.paymentMethod,
         bank: data.bank,
         amount: data.amount,
-        date: date,
-        userId: userId,
-      });
+        date,
+        userId,
+      })
 
-      const formatDate = format(new Date(), "dd/MM/yyyy");
+      const formatDate = format(new Date(), 'dd/MM/yyyy')
 
       toast({
-        title: "Transação adicionada",
-        description: "Transação adicionada com sucesso " + formatDate,
-      });
-      reset();
-      router.push("/home/finances");
-      router.refresh();
+        title: 'Transação adicionada',
+        description: 'Transação adicionada com sucesso ' + formatDate,
+      })
+      reset()
+      router.push('/home/finances')
+      router.refresh()
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   return (
     <DialogPortal>
@@ -281,15 +281,15 @@ const AddTransaction = ({ userId }: AddTransactionProps) => {
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button
-                        variant={"outline"}
+                        variant={'outline'}
                         className={cn(
-                          "w-full justify-start text-left font-normal",
-                          !date && "text-muted-foreground",
+                          'w-full justify-start text-left font-normal',
+                          !date && 'text-muted-foreground',
                         )}
                       >
                         <CalendarIcon className="mr-2 h-4 w-4" />
                         {date ? (
-                          format(date, "dd/MM/yyyy")
+                          format(date, 'dd/MM/yyyy')
                         ) : (
                           <span>Selecione uma data</span>
                         )}
@@ -322,12 +322,12 @@ const AddTransaction = ({ userId }: AddTransactionProps) => {
               <div className="flex items-center gap-4">
                 <DialogClose type="button" className="w-full">
                   <div className="flex h-9 w-full items-center justify-center gap-2 rounded-md bg-red-700 px-4 text-sm font-medium text-zinc-50 transition-colors hover:bg-red-800 ">
-                    Cancelar <X size={16} />{" "}
+                    Cancelar <X size={16} />{' '}
                   </div>
                 </DialogClose>
                 <DialogClose className="w-full" type="submit">
                   <div className="flex h-9 w-full items-center justify-center gap-2 rounded-md bg-sky-500 px-4 text-sm font-medium text-zinc-50 transition-colors hover:bg-sky-600 ">
-                    Criar <Plus size={16} />{" "}
+                    Criar <Plus size={16} />{' '}
                   </div>
                 </DialogClose>
               </div>
@@ -336,7 +336,7 @@ const AddTransaction = ({ userId }: AddTransactionProps) => {
         </DialogContent>
       </DialogOverlay>
     </DialogPortal>
-  );
-};
+  )
+}
 
-export default AddTransaction;
+export default AddTransaction

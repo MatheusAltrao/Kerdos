@@ -1,31 +1,31 @@
-import Container from "@/components/content/Container";
-import Header from "@/components/content/Header";
-import { Separator } from "@/components/ui/separator";
-import CoinsCard from "./components/CoinsCard";
-import StockCard from "./components/StockCard";
-import TaxesCard from "./components/TaxesCard";
+import Container from '@/components/content/Container'
+import Header from '@/components/content/Header'
+import { Separator } from '@/components/ui/separator'
+import CoinsCard from './components/CoinsCard'
+import StockCard from './components/StockCard'
+import TaxesCard from './components/TaxesCard'
 
-//{ cache: 'force-cache', next: { revalidate: 86400 } }
+// { cache: 'force-cache', next: { revalidate: 86400 } }
 
 async function fetchCurrencies() {
   try {
     const response = await fetch(
       `https://api.hgbrasil.com/finance?key=755e419b`,
-    );
+    )
     if (!response.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error('Failed to fetch data')
     }
-    return response.json();
+    return response.json()
   } catch (error) {
-    console.error("Error:", error);
-    throw error;
+    console.error('Error:', error)
+    throw error
   }
 }
 const Investiment = async () => {
-  const fetch = await fetchCurrencies();
-  const fetchCurrenciesArray = fetch.results.currencies;
-  const fetchStocksArray = fetch.results.stocks;
-  const fetchTaxesArray = fetch.results.taxes;
+  const fetch = await fetchCurrencies()
+  const fetchCurrenciesArray = fetch.results.currencies
+  const fetchStocksArray = fetch.results.stocks
+  const fetchTaxesArray = fetch.results.taxes
 
   const currencies = [
     {
@@ -75,43 +75,43 @@ const Investiment = async () => {
       buy: fetchCurrenciesArray.BTC.buy,
       variation: fetchCurrenciesArray.ARS.variation,
     },
-  ];
+  ]
 
   const stocks = [
     {
-      name: "IBOVESPA",
+      name: 'IBOVESPA',
       points: fetchStocksArray.IBOVESPA.points,
       variation: fetchStocksArray.IBOVESPA.variation,
     },
     {
-      name: "IFIX",
+      name: 'IFIX',
       points: fetchStocksArray.IFIX.points,
       variation: fetchStocksArray.IFIX.variation,
     },
     {
-      name: "NASDAQ",
+      name: 'NASDAQ',
       points: fetchStocksArray.NASDAQ.points,
       variation: fetchStocksArray.NASDAQ.variation,
     },
     {
-      name: "DOWJONES",
+      name: 'DOWJONES',
       points: fetchStocksArray.DOWJONES.points,
       variation: fetchStocksArray.DOWJONES.variation,
     },
     {
-      name: "CAC",
+      name: 'CAC',
       points: fetchStocksArray.CAC.points,
       variation: fetchStocksArray.CAC.variation,
     },
     {
-      name: "NIKKEI",
+      name: 'NIKKEI',
       points: fetchStocksArray.NIKKEI.points,
       variation: fetchStocksArray.NIKKEI.variation,
     },
-  ];
+  ]
 
-  const cdi = fetchTaxesArray.map((item: any) => item.cdi);
-  const selic = fetchTaxesArray.map((item: any) => item.selic);
+  const cdi = fetchTaxesArray.map((item: any) => item.cdi)
+  const selic = fetchTaxesArray.map((item: any) => item.selic)
 
   return (
     <Header name="Investimentos">
@@ -158,7 +158,7 @@ const Investiment = async () => {
         </div>
       </Container>
     </Header>
-  );
-};
+  )
+}
 
-export default Investiment;
+export default Investiment

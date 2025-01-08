@@ -1,7 +1,7 @@
-import Container from "@/components/content/Container";
+import Container from '@/components/content/Container'
 
 const Notices = () => {
-  return <Container>teste</Container>;
-};
+  return <Container>teste</Container>
+}
 
-export default Notices;
+export default Notices

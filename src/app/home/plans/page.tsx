@@ -1,46 +1,46 @@
-import Container from "@/components/content/Container";
-import { Badge } from "@/components/ui/badge";
-import { CheckIcon } from "lucide-react";
+import Container from '@/components/content/Container'
+import { Badge } from '@/components/ui/badge'
+import { CheckIcon } from 'lucide-react'
 
-import Header from "@/components/content/Header";
+import Header from '@/components/content/Header'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { authOptions } from "@/lib/auth";
-import { prismaClient } from "@/lib/prisma";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import BuyPlan from "./components/BuyPlan";
-import CancelPlan from "./components/CancelPlan";
+} from '@/components/ui/card'
+import { authOptions } from '@/lib/auth'
+import { prismaClient } from '@/lib/prisma'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
+import BuyPlan from './components/BuyPlan'
+import CancelPlan from './components/CancelPlan'
 
 const Plans = async () => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions)
 
   if (!session || !session.user) {
-    redirect("/");
+    redirect('/')
   }
 
   const finances = await prismaClient.finances.findMany({
     where: {
       userId: session?.user.id,
     },
-  });
+  })
 
-  const currentFinancesQuantity = finances.length;
-  const total = 10;
-  const percentage = (currentFinancesQuantity * 100) / total;
+  const currentFinancesQuantity = finances.length
+  const total = 10
+  const percentage = (currentFinancesQuantity * 100) / total
 
   const user = await prismaClient.user.findFirst({
     where: {
       id: session?.user.id,
     },
-  });
+  })
 
-  const isPlanActive = user?.isPlanActive;
+  const isPlanActive = user?.isPlanActive
 
   return (
     <Header name="Planos">
@@ -61,7 +61,7 @@ const Plans = async () => {
                   <div className="space-y-2">
                     <div className="flex flex-col items-start gap-1 ">
                       <Badge variant="secondary">
-                        {isPlanActive ? "Atual" : "Recomendado"}
+                        {isPlanActive ? 'Atual' : 'Recomendado'}
                       </Badge>
                       <h3 className="text-xl font-bold">Profissional</h3>
                     </div>
@@ -82,7 +82,7 @@ const Plans = async () => {
                   </ul>
                   <div className="flex items-center justify-between gap-4">
                     <div className="self-start">
-                      <div className="text-2xl font-semibold">R$ 19,90</div>
+                      <div className="text-2xl font-semibold">US$ 05,00</div>
                       <p className="text-xs text-muted-foreground">Por mês</p>
                     </div>
                   </div>
@@ -94,7 +94,7 @@ const Plans = async () => {
           </Card>
 
           <Card
-            className={`space-y-4 border-0 p-0 shadow-none ${isPlanActive && "hidden"}`}
+            className={`space-y-4 border-0 p-0 shadow-none ${isPlanActive && 'hidden'}`}
           >
             <CardContent className="p-0">
               <div className="space-y-4">
@@ -114,15 +114,15 @@ const Plans = async () => {
                       />
                     </div>
                     <p className="mt-2 text-sm text-muted-foreground ">
-                      {" "}
+                      {' '}
                       <span className="font-medium text-primary ">
                         {currentFinancesQuantity}
-                      </span>{" "}
-                      de{" "}
+                      </span>{' '}
+                      de{' '}
                       <span className="font-medium text-primary  ">
-                        {" "}
+                        {' '}
                         {total}
-                      </span>{" "}
+                      </span>{' '}
                       finaças utilizadas
                     </p>
                   </div>
@@ -140,7 +140,7 @@ const Plans = async () => {
         </div>
       </Container>
     </Header>
-  );
-};
+  )
+}
 
-export default Plans;
+export default Plans

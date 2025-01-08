@@ -1,14 +1,14 @@
-"use client";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { FinancesProps } from "@/utils/finances.type";
-import { Plus } from "lucide-react";
-import Alert from "./Alert";
-import AddTransaction from "./addTransaction";
+'use client'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
+import { FinancesProps } from '@/utils/finances.type'
+import { Plus } from 'lucide-react'
+import Alert from './Alert'
+import AddTransaction from './addTransaction'
 
 interface ButtonAddFinanceProps {
-  userId: string;
-  isPlanActive: boolean;
-  finances: FinancesProps[];
+  userId: string
+  isPlanActive: boolean
+  finances: FinancesProps[]
 }
 
 const ButtonAddFinance = ({
@@ -32,7 +32,7 @@ const ButtonAddFinance = ({
         finances.length >= 10 && <Alert />
       )}
     </Dialog>
-  );
-};
+  )
+}
 
-export default ButtonAddFinance;
+export default ButtonAddFinance

@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   BarChart4,
@@ -6,8 +6,8 @@ import {
   FileText,
   Settings,
   TrendingUp,
-} from "lucide-react";
-import ActiveLink from "./ActiveLink";
+} from 'lucide-react'
+import ActiveLink from './ActiveLink'
 
 const Navigation = () => {
   return (
@@ -40,7 +40,7 @@ const Navigation = () => {
         icon={<Settings size={18} />}
       />
     </nav>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation

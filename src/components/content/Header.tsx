@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
-import SheetMenu from "./SheetMenu";
+import { ReactNode } from 'react'
+import SheetMenu from './SheetMenu'
 
 interface HeaderProps {
-  name: string;
-  children: ReactNode;
+  name: string
+  children: ReactNode
 }
 
 const Header = ({ name, children }: HeaderProps) => {
@@ -16,7 +16,7 @@ const Header = ({ name, children }: HeaderProps) => {
 
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

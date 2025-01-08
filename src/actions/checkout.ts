@@ -1,21 +1,21 @@
-"use server";
-import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
-import Stripe from "stripe";
+'use server'
+import { authOptions } from '@/lib/auth'
+import { getServerSession } from 'next-auth'
+import Stripe from 'stripe'
 
 export const createCheckout = async () => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions)
 
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-    apiVersion: "2023-10-16",
-  });
+    apiVersion: '2023-10-16',
+  })
 
   if (session) {
     const checkout = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
-      mode: "subscription",
-      success_url: process.env.NEXT_PUBLIC_URL + "/success",
-      cancel_url: process.env.NEXT_PUBLIC_URL + "/cancel",
+      payment_method_types: ['card'],
+      mode: 'subscription',
+      success_url: process.env.NEXT_PUBLIC_URL + '/success',
+      cancel_url: process.env.NEXT_PUBLIC_URL + '/cancel',
       metadata: {
         id: session.user.id,
       },
@@ -25,7 +25,7 @@ export const createCheckout = async () => {
           price: process.env.STRIPE_PRICE_ID as string,
         },
       ],
-    });
-    return checkout;
+    })
+    return checkout
   }
-};
+}
