@@ -9,7 +9,7 @@ import { ArrowDown, ArrowUp, DollarSign } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import Card from './components/Card'
-import { Button } from '@/components/ui/button'
+import ReportDialog from './components/ReportDialog'
 
 const Dashboard = () => {
   const [startDate, setStartDate] = useState<Date | undefined>(new Date())
@@ -88,6 +88,7 @@ const Dashboard = () => {
   return (
     <Header name="Dashboard">
       <Container>
+        <ReportDialog />
         <div className="grid w-full grid-cols-1 gap-6 xl:grid-cols-3">
           <Card
             amount={depositAmount}

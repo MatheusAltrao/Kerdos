@@ -1,12 +1,10 @@
-'use client'
-
 import { RegisterOptions, UseFormRegister } from 'react-hook-form'
 
 interface InputProps {
   type: string
   placeholder: string
   name: string
-  register: UseFormRegister<any>
+  register?: UseFormRegister<any>
   error?: string
   rules?: RegisterOptions
 }
@@ -24,9 +22,9 @@ const Input = ({
       <input
         placeholder={placeholder}
         type={type}
-        {...register(name, rules)}
+        {...(register ? register(name, rules) : {})} // ✅ Apply register only if available
         id={name}
-        className="w-full rounded  border border-border bg-transparent p-2 text-sm"
+        className="w-full rounded border border-border bg-transparent p-2 text-sm"
       />
       {error && <p className="text-error">{error}</p>}
     </div>

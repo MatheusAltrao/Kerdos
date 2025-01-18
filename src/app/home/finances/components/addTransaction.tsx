@@ -40,20 +40,20 @@ const schema = z.object({
   bank: z.string().min(1, 'Banco obrigatório'),
   amount: z
     .string()
-    .min(1, 'Banco obrigatório')
-    .refine(
-      (value) => /^\d+$/.test(value),
-      "O campo 'Valor' só permite números",
-    ),
+    .min(1, 'Valor obrigatório')
+    .refine((value) => !value.includes(','), {
+      message: 'Use ponto (.) em vez de vírgula (,)',
+    }),
 })
 
 type IFormData = z.infer<typeof schema>
 
 interface AddTransactionProps {
   userId: string
+  setIsOpen: (value: boolean) => void
 }
 
-const AddTransaction = ({ userId }: AddTransactionProps) => {
+const AddTransaction = ({ userId, setIsOpen }: AddTransactionProps) => {
   const [date, setDate] = useState<Date | undefined>(new Date())
   const router = useRouter()
   const { toast } = useToast()
@@ -90,7 +90,9 @@ const AddTransaction = ({ userId }: AddTransactionProps) => {
       reset()
       router.push('/home/finances')
       router.refresh()
+      setIsOpen(false)
     } catch (error) {
+      setIsOpen(true)
       console.log(error)
     }
   }
@@ -222,7 +224,7 @@ const AddTransaction = ({ userId }: AddTransactionProps) => {
                         )}
                       />
 
-                      {errors.category && (
+                      {errors.paymentMethod && (
                         <p className="text-error">
                           Método de pagamento obrigatório
                         </p>
@@ -295,7 +297,7 @@ const AddTransaction = ({ userId }: AddTransactionProps) => {
                         )}
                       </Button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0">
+                    <PopoverContent side="top" className="w-auto p-0">
                       <Calendar
                         required
                         mode="single"
@@ -320,16 +322,18 @@ const AddTransaction = ({ userId }: AddTransactionProps) => {
               </div>
 
               <div className="flex items-center gap-4">
-                <DialogClose type="button" className="w-full">
-                  <div className="flex h-9 w-full items-center justify-center gap-2 rounded-md bg-red-700 px-4 text-sm font-medium text-zinc-50 transition-colors hover:bg-red-800 ">
+                <DialogClose asChild>
+                  <Button
+                    onClick={() => reset()}
+                    className="w-full gap-2"
+                    variant={'destructive'}
+                  >
                     Cancelar <X size={16} />{' '}
-                  </div>
+                  </Button>
                 </DialogClose>
-                <DialogClose className="w-full" type="submit">
-                  <div className="flex h-9 w-full items-center justify-center gap-2 rounded-md bg-sky-500 px-4 text-sm font-medium text-zinc-50 transition-colors hover:bg-sky-600 ">
-                    Criar <Plus size={16} />{' '}
-                  </div>
-                </DialogClose>
+                <Button className="w-full gap-2">
+                  Criar <Plus size={16} />{' '}
+                </Button>
               </div>
             </form>
           </div>
