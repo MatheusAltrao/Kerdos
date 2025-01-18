@@ -27,7 +27,7 @@ const Settings = () => {
                 <div>
                   <h2 className="text-base font-medium">Tema</h2>
                   <p className="text-sm text-muted-foreground">
-                    Select the theme for the dashboard.
+                    Selecione o tema para dashboard
                   </p>
                 </div>
 
