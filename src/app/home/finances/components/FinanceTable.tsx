@@ -1,5 +1,5 @@
-'use client'
-import { Button } from '@/components/ui/button'
+"use client";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -7,7 +7,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -15,40 +15,40 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
-import { FinancesProps } from '@/utils/finances.type'
-import formatAmount from '@/utils/formatAmout'
-import { formatDate } from 'date-fns'
-import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
-import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator'
-import { useState } from 'react'
-import ActionsButtons from './ActionsButton'
-import Ball from './Ball'
-import ButtonAddFinance from './ButtonAddFinance'
+} from "@/components/ui/table";
+import { FinancesProps } from "@/utils/finances.type";
+import formatAmount from "@/utils/formatAmout";
+import { formatDate } from "date-fns";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { Paginator, PaginatorPageChangeEvent } from "primereact/paginator";
+import { useState } from "react";
+import ActionsButtons from "./ActionsButton";
+import Ball from "./Ball";
+import ButtonAddFinance from "./ButtonAddFinance";
 interface FinanceTableProps {
-  finances: FinancesProps[]
-  isPlanActive: boolean
-  userId: string
+  finances: FinancesProps[];
+  isPlanActive: boolean;
+  userId: string;
 }
 
 type ColumnVisibility = {
-  Nome: boolean
-  MétodoDePagamento: boolean
-  Categoria: boolean
-  Valor: boolean
-  Data: boolean
-  Banco: boolean
-  Ações: boolean
-}
+  Nome: boolean;
+  MétodoDePagamento: boolean;
+  Categoria: boolean;
+  Valor: boolean;
+  Data: boolean;
+  Banco: boolean;
+  Ações: boolean;
+};
 
 const FinanceTable = ({
   finances,
   isPlanActive,
   userId,
 }: FinanceTableProps) => {
-  const [first, setFirst] = useState<number>(0)
-  const [rows, setRows] = useState<number>(5)
+  const [first, setFirst] = useState<number>(0);
+  const [rows, setRows] = useState<number>(5);
 
   const [columnVisibility, setColumnVisibility] = useState<ColumnVisibility>({
     Nome: true,
@@ -58,12 +58,12 @@ const FinanceTable = ({
     Data: true,
     Banco: true,
     Ações: true,
-  })
+  });
 
   const onPageChange = (event: PaginatorPageChangeEvent) => {
-    setFirst(event.first)
-    setRows(event.rows)
-  }
+    setFirst(event.first);
+    setRows(event.rows);
+  };
 
   return (
     <div className="w-full space-y-8">
@@ -154,7 +154,7 @@ const FinanceTable = ({
                   )}
                   {columnVisibility.Data && (
                     <TableCell>
-                      {formatDate(finance.date, 'dd/MM/yyyy')}
+                      {formatDate(finance.date, "dd/MM/yyyy")}
                     </TableCell>
                   )}
                   {columnVisibility.Banco && (
@@ -212,7 +212,7 @@ const FinanceTable = ({
           </Table>
         </div>
 
-        {finances.length == 0 && (
+        {finances.length === 0 && (
           <div>
             <p className="mt-4 text-sm text-muted-foreground">
               Você ainda não tem nenhuma transação, clique em adicionar para
@@ -231,7 +231,7 @@ const FinanceTable = ({
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FinanceTable
+export default FinanceTable;
