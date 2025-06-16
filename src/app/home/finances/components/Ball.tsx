@@ -3,10 +3,10 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from '@/components/ui/tooltip'
 
 interface BallProps {
-  status: string;
+  status: string
 }
 
 const Ball = ({ status }: BallProps) => {
@@ -14,9 +14,9 @@ const Ball = ({ status }: BallProps) => {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger>
-          {" "}
+          {' '}
           <div
-            className={`h-[10px] w-[10px] cursor-default ${status === "Entrada" ? "bg-green-600" : "bg-red-600 "} absolute left-4 top-7 rounded-full`}
+            className={`h-[10px] w-[10px] cursor-default ${status === 'Entrada' ? 'bg-green-600' : 'bg-red-600 '} absolute left-4 top-7 rounded-full`}
           />
         </TooltipTrigger>
         <TooltipContent>
@@ -24,7 +24,7 @@ const Ball = ({ status }: BallProps) => {
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
-  );
-};
+  )
+}
 
-export default Ball;
+export default Ball

@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     )
 
     switch (event.type) {
-      case 'checkout.session.completed':
+      case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session
         await prismaClient.user.update({
           where: {
@@ -37,10 +37,11 @@ export async function POST(req: Request) {
           },
         })
         break
-      default:
+      }
+      default: {
         console.log(`Unhandled event type: ${event.type}`)
+      }
     }
-
     return NextResponse.json({ received: true })
   } catch (err) {
     console.error(`Error processing webhook event: ${err}`)

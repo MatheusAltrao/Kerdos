@@ -32,7 +32,15 @@ const FinanceID = async ({ params }: FinanceIDProps) => {
     },
   })
 
-  console.log(finance)
+  if (!finance) {
+    return (
+      <Header name="Finanças">
+        <Container>
+          <p>Transação não encontrada.</p>
+        </Container>
+      </Header>
+    )
+  }
 
   return (
     <Header name="Finanças">
@@ -97,9 +105,11 @@ const FinanceID = async ({ params }: FinanceIDProps) => {
                   id="date"
                   type="text"
                   className="w-full"
-                  defaultValue={String(
-                    formatDate(finance?.date!, 'dd/MM/yyyy'),
-                  )}
+                  defaultValue={
+                    finance?.date
+                      ? formatDate(new Date(finance.date), 'dd/MM/yyyy')
+                      : 'Data não disponível'
+                  }
                   readOnly
                 />
               </div>

@@ -20,7 +20,7 @@ const Finance = async () => {
     },
   })
 
-  const isPlanActive = user && user?.isPlanActive
+  const isPlanActive = (user && user?.isPlanActive) || false
 
   return (
     <Header name="Finanças">
